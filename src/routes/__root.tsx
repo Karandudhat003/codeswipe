@@ -77,17 +77,21 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "CodeSwipe IT Solutions — Web, Mobile & AI Product Studio" },
+      { title: "CodeSwipe IT Solutions — We Build Digital Experiences That Scale" },
       {
         name: "description",
         content:
-          "CodeSwipe IT Solutions builds high-performance websites, mobile apps, SaaS platforms and AI products for ambitious brands. Design, engineering and growth from day one.",
+          "Websites, mobile apps, SaaS and AI products engineered to strengthen your brand and drive growth. Design, engineering and product ownership from day one.",
       },
       { name: "author", content: "CodeSwipe IT Solutions" },
-      { property: "og:title", content: "CodeSwipe IT Solutions — Web, Mobile & AI Product Studio" },
-      { property: "og:description", content: "We design and engineer scalable digital products — websites, mobile apps, SaaS and AI systems." },
+      { property: "og:title", content: "CodeSwipe IT Solutions — We Build Digital Experiences That Scale" },
+      { property: "og:description", content: "Websites, mobile apps, SaaS and AI products engineered to strengthen your brand and drive growth. Design, engineering and product ownership from day one." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "CodeSwipe IT Solutions — We Build Digital Experiences That Scale" },
+      { name: "twitter:description", content: "Websites, mobile apps, SaaS and AI products engineered to strengthen your brand and drive growth. Design, engineering and product ownership from day one." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed05a845-258b-405e-bc1d-23910b4952e8/id-preview-6bbe6336--bb5eb2c1-6ae0-4c6b-bcf6-7abcda987995.lovable.app-1784086138524.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/ed05a845-258b-405e-bc1d-23910b4952e8/id-preview-6bbe6336--bb5eb2c1-6ae0-4c6b-bcf6-7abcda987995.lovable.app-1784086138524.png" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
