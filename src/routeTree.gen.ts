@@ -10,7 +10,9 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ServicesRouteImport } from './routes/services'
+import { Route as QuoteRouteImport } from './routes/quote'
 import { Route as PortfolioRouteImport } from './routes/portfolio'
+import { Route as HireDevelopersRouteImport } from './routes/hire-developers'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as CareersRouteImport } from './routes/careers'
 import { Route as BlogsRouteImport } from './routes/blogs'
@@ -22,9 +24,19 @@ const ServicesRoute = ServicesRouteImport.update({
   path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuoteRoute = QuoteRouteImport.update({
+  id: '/quote',
+  path: '/quote',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PortfolioRoute = PortfolioRouteImport.update({
   id: '/portfolio',
   path: '/portfolio',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const HireDevelopersRoute = HireDevelopersRouteImport.update({
+  id: '/hire-developers',
+  path: '/hire-developers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -59,7 +71,9 @@ export interface FileRoutesByFullPath {
   '/blogs': typeof BlogsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/hire-developers': typeof HireDevelopersRoute
   '/portfolio': typeof PortfolioRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesByTo {
@@ -68,7 +82,9 @@ export interface FileRoutesByTo {
   '/blogs': typeof BlogsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/hire-developers': typeof HireDevelopersRoute
   '/portfolio': typeof PortfolioRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRoutesById {
@@ -78,7 +94,9 @@ export interface FileRoutesById {
   '/blogs': typeof BlogsRoute
   '/careers': typeof CareersRoute
   '/contact': typeof ContactRoute
+  '/hire-developers': typeof HireDevelopersRoute
   '/portfolio': typeof PortfolioRoute
+  '/quote': typeof QuoteRoute
   '/services': typeof ServicesRoute
 }
 export interface FileRouteTypes {
@@ -89,7 +107,9 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/careers'
     | '/contact'
+    | '/hire-developers'
     | '/portfolio'
+    | '/quote'
     | '/services'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -98,7 +118,9 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/careers'
     | '/contact'
+    | '/hire-developers'
     | '/portfolio'
+    | '/quote'
     | '/services'
   id:
     | '__root__'
@@ -107,7 +129,9 @@ export interface FileRouteTypes {
     | '/blogs'
     | '/careers'
     | '/contact'
+    | '/hire-developers'
     | '/portfolio'
+    | '/quote'
     | '/services'
   fileRoutesById: FileRoutesById
 }
@@ -117,7 +141,9 @@ export interface RootRouteChildren {
   BlogsRoute: typeof BlogsRoute
   CareersRoute: typeof CareersRoute
   ContactRoute: typeof ContactRoute
+  HireDevelopersRoute: typeof HireDevelopersRoute
   PortfolioRoute: typeof PortfolioRoute
+  QuoteRoute: typeof QuoteRoute
   ServicesRoute: typeof ServicesRoute
 }
 
@@ -130,11 +156,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quote': {
+      id: '/quote'
+      path: '/quote'
+      fullPath: '/quote'
+      preLoaderRoute: typeof QuoteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/portfolio': {
       id: '/portfolio'
       path: '/portfolio'
       fullPath: '/portfolio'
       preLoaderRoute: typeof PortfolioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/hire-developers': {
+      id: '/hire-developers'
+      path: '/hire-developers'
+      fullPath: '/hire-developers'
+      preLoaderRoute: typeof HireDevelopersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -181,7 +221,9 @@ const rootRouteChildren: RootRouteChildren = {
   BlogsRoute: BlogsRoute,
   CareersRoute: CareersRoute,
   ContactRoute: ContactRoute,
+  HireDevelopersRoute: HireDevelopersRoute,
   PortfolioRoute: PortfolioRoute,
+  QuoteRoute: QuoteRoute,
   ServicesRoute: ServicesRoute,
 }
 export const routeTree = rootRouteImport
