@@ -2,6 +2,7 @@ import type { ReactNode } from "react";
 import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { CTASection } from "./CTASection";
+import { FloatingWidgets } from "./FloatingWidgets";
 
 export function PageShell({ children, hideCta = false }: { children: ReactNode; hideCta?: boolean }) {
   return (
@@ -14,6 +15,7 @@ export function PageShell({ children, hideCta = false }: { children: ReactNode; 
         </div>
       )}
       <Footer />
+      <FloatingWidgets />
     </div>
   );
 }
