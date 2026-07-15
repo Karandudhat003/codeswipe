@@ -70,16 +70,17 @@ function HomePage() {
                 <div className="mt-8 flex flex-wrap gap-3">
                   <Link
                     to="/contact"
-                    className="inline-flex items-center gap-2 rounded-full px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-brand"
-                    style={{ background: "var(--ink)" }}
+                    className="group relative inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-brand transition-all duration-300 hover:shadow-[0_20px_50px_-12px_hsl(var(--primary)/0.55)] hover:-translate-y-0.5 active:translate-y-0"
                   >
-                    Start Your Project <ArrowUpRight className="h-4 w-4" />
+                    Start Your Project
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                   <Link
                     to="/portfolio"
-                    className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-6 py-3.5 text-sm font-medium hover:bg-muted transition"
+                    className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-muted hover:-translate-y-0.5"
                   >
-                    Our Work →
+                    Our Work
+                    <ArrowUpRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </Link>
                 </div>
               </Reveal>
