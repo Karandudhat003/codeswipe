@@ -8,8 +8,8 @@ const links = [
   { to: "/", label: "Home" },
   { to: "/about", label: "About" },
   { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Portfolio" },
-  { to: "/hire-developers", label: "Hire" },
+  { to: "/portfolio", label: "Work" },
+  { to: "/hire-developers", label: "Hire Developers" },
   { to: "/quote", label: "Get Quote" },
   { to: "/careers", label: "Careers" },
   { to: "/contact", label: "Contact" },
@@ -21,20 +21,26 @@ export function Navbar() {
   const pathname = location.pathname;
 
   return (
-    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-        <Link to="/" className="flex items-center gap-2">
-          <img src={logo} alt="CodeSwipe IT Solutions" className="h-10 w-auto" />
+    <header className="sticky top-0 z-50 border-b border-border/50 bg-background/85 backdrop-blur-xl">
+      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 xl:flex xl:justify-between">
+        <Link to="/" className="flex min-w-0 items-center" onClick={() => setOpen(false)}>
+          <img
+            src={logo}
+            alt="CodeSwipe IT Solutions"
+            className="h-9 w-auto sm:h-11 shrink-0"
+            width={1064}
+            height={230}
+          />
         </Link>
 
-        <nav className="hidden lg:flex items-center gap-1 rounded-full border border-border/60 bg-background/60 p-1 shadow-card">
+        <nav className="hidden xl:flex items-center gap-0.5 rounded-full border border-border/60 bg-background/60 p-1 shadow-card">
           {links.map((l) => {
             const active = pathname === l.to;
             return (
               <Link
                 key={l.to}
                 to={l.to}
-                className={`relative rounded-full px-4 py-2 text-sm font-medium transition ${
+                className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? "text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -47,29 +53,31 @@ export function Navbar() {
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
-                <span className="relative z-10">{l.label}</span>
+                <span className="relative z-10 whitespace-nowrap">{l.label}</span>
               </Link>
             );
           })}
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
             to="/contact"
-            className="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-ink text-primary-foreground px-5 py-2.5 text-sm font-medium hover:opacity-90 transition"
+            className="hidden sm:inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
             style={{ backgroundColor: "var(--ink)" }}
           >
             Start Your Project <ArrowUpRight className="h-4 w-4" />
           </Link>
           <button
-            className="lg:hidden rounded-full border border-border p-2"
+            className="xl:hidden rounded-full border border-border p-2"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle menu"
+            aria-expanded={open}
           >
             {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </button>
         </div>
       </div>
+
 
       <AnimatePresence>
         {open && (
