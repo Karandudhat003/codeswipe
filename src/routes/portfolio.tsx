@@ -51,26 +51,28 @@ function PortfolioPage() {
               whileHover={{ y: -6 }}
               className="group rounded-3xl border border-border bg-card p-5 shadow-card hover:shadow-brand transition-shadow h-full"
             >
-              <div className={`relative aspect-[16/10] overflow-hidden rounded-2xl bg-gradient-to-br ${p.grad}`}>
-                <div className="absolute inset-0 flex items-end p-6">
-                  <div className="w-full">
-                    <div className="flex items-center gap-2">
-                      {[0, 1, 2].map((n) => (
-                        <div key={n} className="h-2 w-8 rounded-full bg-white/60" />
-                      ))}
-                    </div>
-                    <div className="mt-2 flex items-center gap-2">
-                      <span className="text-6xl font-display font-bold text-white/40">0{(i % 9) + 1}</span>
-                    </div>
-                  </div>
-                </div>
-                <motion.div
-                  initial={{ x: "-100%" }}
-                  whileHover={{ x: "100%" }}
-                  transition={{ duration: 0.9 }}
-                  className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-muted">
+                <motion.img
+                  src={p.img}
+                  alt={p.title}
+                  loading="lazy"
+                  width={1000}
+                  height={625}
+                  whileHover={{ scale: 1.06 }}
+                  transition={{ duration: 0.7 }}
+                  className="h-full w-full object-cover"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+                <div className="absolute inset-0 flex items-end justify-between p-5">
+                  <span className="rounded-full bg-background/90 px-3 py-1 text-xs font-medium text-foreground">
+                    {p.tag}
+                  </span>
+                  <span className="text-4xl font-display font-bold text-white/70">
+                    0{(i % 9) + 1}
+                  </span>
+                </div>
               </div>
+
               <div className="mt-5">
                 <div className="text-xs uppercase tracking-widest text-primary">{p.tag}</div>
                 <h3 className="mt-1 text-xl font-display font-semibold">{p.title}</h3>
