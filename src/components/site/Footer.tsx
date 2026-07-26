@@ -8,7 +8,7 @@ export function Footer() {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid gap-12 md:grid-cols-4">
           <div className="md:col-span-1">
-            <img src={logo} alt="CodeSwipe" className="h-12 w-auto brightness-0 invert opacity-90" />
+            <img src={logo} alt="CodeSwipe" className="h-8 w-auto brightness-0 invert opacity-90" />
             <p className="mt-6 text-2xl font-display font-semibold leading-tight">
               From idea to launch — <span className="text-gradient">we build products that drive growth.</span>
             </p>

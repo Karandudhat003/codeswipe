@@ -22,16 +22,17 @@ export function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/85 backdrop-blur-xl">
-      <div className="mx-auto grid h-20 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 xl:flex xl:justify-between">
+      <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 xl:flex xl:justify-between">
         <Link to="/" className="flex min-w-0 items-center" onClick={() => setOpen(false)}>
           <img
             src={logo}
             alt="CodeSwipe IT Solutions"
-            className="h-9 w-auto sm:h-11 shrink-0"
+            className="h-6 w-auto sm:h-7 shrink-0"
             width={1064}
             height={230}
           />
         </Link>
+
 
         <nav className="hidden xl:flex items-center gap-0.5 rounded-full border border-border/60 bg-background/60 p-1 shadow-card">
           {links.map((l) => {
