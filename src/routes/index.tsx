@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Zap, ShieldCheck, Layers, Sparkles, Rocket, Compass, PenTool, Code2, Send } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import heroVisual from "@/assets/hero-visual.jpg";
 import svcWeb from "@/assets/service-web.jpg";
 import svcMobile from "@/assets/service-mobile.jpg";
 import svcUiUx from "@/assets/service-uiux.jpg";
@@ -48,78 +47,74 @@ function HomePage() {
   return (
     <PageShell>
       {/* HERO */}
-      <section className="relative bg-hero">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-24 md:pt-24 md:pb-32">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
-            <div>
-              <Reveal>
-                <Eyebrow>Product engineering studio</Eyebrow>
-              </Reveal>
-              <Reveal delay={0.1}>
-                <h1 className="mt-6 text-5xl md:text-6xl lg:text-7xl font-display font-semibold leading-[1.05]">
-                  We Build Digital Experiences{" "}
-                  <span className="text-gradient italic">That Scale.</span>
-                </h1>
-              </Reveal>
-              <Reveal delay={0.2}>
-                <p className="mt-6 max-w-xl text-lg text-muted-foreground">
-                  CodeSwipe IT Solutions partners with founders and teams to design, engineer and grow digital products — from a landing page to a full SaaS platform.
-                </p>
-              </Reveal>
-              <Reveal delay={0.3}>
-                <div className="mt-8 flex flex-wrap gap-3">
-                  <Link
-                    to="/contact"
-                    className="group relative inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-brand transition-all duration-300 hover:shadow-[0_20px_50px_-12px_hsl(var(--primary)/0.55)] hover:-translate-y-0.5 active:translate-y-0"
-                  >
-                    Start Your Project
-                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-                  <Link
-                    to="/portfolio"
-                    className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-muted hover:-translate-y-0.5"
-                  >
-                    Our Work
-                    <ArrowUpRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-                  </Link>
-                </div>
-              </Reveal>
-
-              <Reveal delay={0.4}>
-                <div className="mt-12 grid grid-cols-3 gap-6 max-w-md">
-                  {[
-                    { k: "50+", v: "Projects" },
-                    { k: "20+", v: "Brands" },
-                    { k: "100%", v: "On-time" },
-                  ].map((s) => (
-                    <div key={s.v}>
-                      <div className="text-3xl font-display font-semibold text-gradient">{s.k}</div>
-                      <div className="text-xs uppercase tracking-widest text-muted-foreground mt-1">{s.v}</div>
-                    </div>
-                  ))}
-                </div>
-              </Reveal>
+      <section className="relative overflow-hidden bg-hero">
+        <div className="pointer-events-none absolute -top-32 left-1/2 h-[420px] w-[420px] -translate-x-1/2 rounded-full bg-brand opacity-20 blur-3xl" aria-hidden />
+        <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pt-20 pb-24 md:pt-28 md:pb-32 text-center">
+          <Reveal>
+            <div className="flex justify-center">
+              <Eyebrow>Product engineering studio</Eyebrow>
             </div>
-
-            <Reveal delay={0.2}>
-              <motion.div
-                animate={{ y: [0, -12, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
+          </Reveal>
+          <Reveal delay={0.1}>
+            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-semibold leading-[1.05]">
+              We Build Digital Experiences{" "}
+              <span className="text-gradient italic">That Scale.</span>
+            </h1>
+          </Reveal>
+          <Reveal delay={0.2}>
+            <p className="mt-6 mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground">
+              CodeSwipe IT Solutions partners with founders and teams to design, engineer and grow digital products — from a landing page to a full SaaS platform.
+            </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="mt-9 flex flex-wrap justify-center gap-3">
+              <Link
+                to="/contact"
+                className="group relative inline-flex items-center gap-2 rounded-full bg-brand px-7 py-3.5 text-sm font-semibold text-primary-foreground shadow-brand transition-all duration-300 hover:-translate-y-0.5 active:translate-y-0"
               >
-                <div className="absolute -inset-8 bg-brand opacity-20 blur-3xl rounded-full" />
-                <img
-                  src={heroVisual}
-                  alt="Dashboard product visualization"
-                  className="relative w-full h-auto rounded-3xl"
-                  width={1200}
-                  height={1000}
-                />
-              </motion.div>
-            </Reveal>
-          </div>
+                Start Your Project
+                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+              <Link
+                to="/quote"
+                className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-7 py-3.5 text-sm font-semibold text-foreground transition-all duration-300 hover:border-primary/40 hover:bg-muted hover:-translate-y-0.5"
+              >
+                Get a Free Quote
+                <ArrowUpRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.4}>
+            <div className="mt-14 grid grid-cols-3 gap-6 max-w-lg mx-auto">
+              {[
+                { k: "50+", v: "Projects" },
+                { k: "20+", v: "Brands" },
+                { k: "100%", v: "On-time" },
+              ].map((s) => (
+                <div key={s.v}>
+                  <div className="text-2xl sm:text-3xl font-display font-semibold text-gradient">{s.k}</div>
+                  <div className="text-[10px] sm:text-xs uppercase tracking-widest text-muted-foreground mt-1">{s.v}</div>
+                </div>
+              ))}
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.5}>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+              className="mt-16 flex flex-col items-center gap-2 text-muted-foreground"
+            >
+              <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
+              <span className="h-10 w-6 rounded-full border border-border flex items-start justify-center p-1">
+                <span className="h-2 w-1 rounded-full bg-primary" />
+              </span>
+            </motion.div>
+          </Reveal>
         </div>
       </section>
+
 
       {/* BRANDS MARQUEE */}
       <section className="border-y border-border bg-secondary/30 py-10">
