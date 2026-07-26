@@ -88,6 +88,31 @@ function ServicesPage() {
         ))}
       </section>
 
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
+        <div className="text-center">
+          <Reveal><Eyebrow>Complete IT capability</Eyebrow></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
+              Every service your business <span className="text-gradient">needs under one roof.</span>
+            </h2>
+          </Reveal>
+        </div>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {moreServices.map((m, i) => (
+            <Reveal key={m.title} delay={i * 0.04}>
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand transition-shadow"
+              >
+                <h3 className="font-display text-lg font-semibold">{m.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+              </motion.div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
+
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
         <div className="text-center">
           <Reveal><Eyebrow>FAQ</Eyebrow></Reveal>
