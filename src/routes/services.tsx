@@ -30,6 +30,22 @@ const services = [
   { n: "06", title: "AI Solutions", img: svcAi, bullets: ["AI Automation", "Chatbot Systems", "Workflow Intelligence"], desc: "Practical AI systems and automation workflows designed to improve productivity and operational efficiency." },
 ];
 
+const moreServices = [
+  { title: "E-commerce Development", desc: "Shopify, WooCommerce and custom storefronts with payments, inventory and analytics built in." },
+  { title: "SaaS Product Development", desc: "Multi-tenant SaaS platforms with subscriptions, roles, billing and admin dashboards." },
+  { title: "Custom Software / ERP & CRM", desc: "Internal tools, ERP modules and CRMs tailored to how your team actually operates." },
+  { title: "CMS & WordPress", desc: "Headless CMS or WordPress builds your marketing team can update without a developer." },
+  { title: "DevOps & CI/CD", desc: "Dockerised pipelines, automated testing, monitoring and zero-downtime deployments." },
+  { title: "QA & Automation Testing", desc: "Manual and automated QA with Playwright and Cypress across web and mobile." },
+  { title: "SEO & Performance", desc: "Core Web Vitals tuning, technical SEO, structured data and speed optimisation." },
+  { title: "Digital Marketing", desc: "Landing pages, campaign funnels, analytics setup and conversion rate optimisation." },
+  { title: "Maintenance & Support", desc: "Retainers with clear SLAs, security patching, backups and continuous improvements." },
+  { title: "Hire Dedicated Developers", desc: "Vetted senior engineers and designers embedded in your team, monthly or long-term." },
+  { title: "Data & Analytics", desc: "Dashboards, reporting pipelines and data warehousing to make decisions with evidence." },
+  { title: "Blockchain & Web3", desc: "Smart contracts, wallet integrations and token-powered platforms built securely." },
+];
+
+
 const faqs = [
   { q: "How long does it take to complete a project?", a: "The timeline depends on scope, complexity and requirements. A standard business website typically takes 4–8 weeks, while custom web applications, SaaS platforms or complex solutions may require several weeks or months. We provide a clear project roadmap and timeline before development begins to ensure transparency throughout the process." },
   { q: "Do you work with startups and enterprises?", a: "Yes. Our team is comfortable partnering with pre-seed founders and enterprise product teams alike. The engagement model, contracts and rituals adapt to the stage." },
