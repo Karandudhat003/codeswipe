@@ -85,7 +85,7 @@ export function Navbar() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            className="lg:hidden overflow-hidden border-t border-border bg-background"
+            className="xl:hidden overflow-hidden border-t border-border bg-background"
           >
             <div className="flex flex-col p-4 gap-1">
               {links.map((l) => (
@@ -102,7 +102,15 @@ export function Navbar() {
                   {l.label}
                 </Link>
               ))}
+              <Link
+                to="/contact"
+                onClick={() => setOpen(false)}
+                className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-brand"
+              >
+                Start Your Project <ArrowUpRight className="h-4 w-4" />
+              </Link>
             </div>
+
           </motion.nav>
         )}
       </AnimatePresence>
