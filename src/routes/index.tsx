@@ -3,7 +3,6 @@ import { motion } from "framer-motion";
 import { ArrowUpRight, Zap, ShieldCheck, Layers, Sparkles, Rocket, Compass, PenTool, Code2, Send } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import heroVisual from "@/assets/hero-visual.jpg";
 import svcWeb from "@/assets/service-web.jpg";
 import svcMobile from "@/assets/service-mobile.jpg";
 import svcUiUx from "@/assets/service-uiux.jpg";
