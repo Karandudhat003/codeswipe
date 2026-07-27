@@ -137,7 +137,7 @@ export const SERVICE_CATALOG: ServiceEntry[] = [
   },
 ];
 
-export const TECH_GROUPS: { group: string; tech: { name: string; slug: string; color?: string }[] }[] = [
+export const TECH_GROUPS: { group: string; tech: { name: string; slug?: string }[] }[] = [
   {
     group: "Frontend",
     tech: [
@@ -187,8 +187,8 @@ export const TECH_GROUPS: { group: string; tech: { name: string; slug: string; c
   {
     group: "Cloud & DevOps",
     tech: [
-      { name: "AWS", slug: "amazonwebservices" },
-      { name: "Azure", slug: "microsoftazure" },
+      { name: "AWS" },
+      { name: "Azure" },
       { name: "Google Cloud", slug: "googlecloud" },
       { name: "Vercel", slug: "vercel" },
       { name: "Netlify", slug: "netlify" },
@@ -202,24 +202,24 @@ export const TECH_GROUPS: { group: string; tech: { name: string; slug: string; c
       { name: "WordPress", slug: "wordpress" },
       { name: "Shopify", slug: "shopify" },
       { name: "WooCommerce", slug: "woocommerce" },
-      { name: "Magento", slug: "magento" },
+      { name: "Magento" },
     ],
   },
   {
     group: "AI",
     tech: [
-      { name: "OpenAI", slug: "openai" },
+      { name: "OpenAI" },
       { name: "Gemini AI", slug: "googlegemini" },
       { name: "Claude AI", slug: "anthropic" },
       { name: "LangChain", slug: "langchain" },
-      { name: "Pinecone", slug: "pinecone" },
+      { name: "Pinecone" },
     ],
   },
 ];
 
 export const MARQUEE_TECH = [
   "react", "nextdotjs", "typescript", "nodedotjs", "tailwindcss", "flutter",
-  "shopify", "wordpress", "laravel", "python", "docker", "amazonwebservices",
+  "shopify", "wordpress", "laravel", "python", "docker", "huggingface",
   "postgresql", "mongodb", "supabase", "openai", "figma", "stripe",
 ];
 
