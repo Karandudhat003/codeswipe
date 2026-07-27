@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+"use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowUpRight } from "lucide-react";
 
@@ -26,7 +27,7 @@ export function CTASection() {
           </p>
         </div>
         <Link
-          to="/contact"
+          href="/contact"
           className="inline-flex items-center gap-2 self-start md:self-auto rounded-full px-6 py-3.5 text-sm font-medium text-primary-foreground shadow-brand"
           style={{ background: "var(--ink)" }}
         >

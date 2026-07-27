@@ -1,18 +1,10 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+"use client";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { ArrowUpRight } from "lucide-react";
 
-export const Route = createFileRoute("/blogs")({
-  head: () => ({
-    meta: [
-      { title: "Blogs — CodeSwipe IT Solutions" },
-      { name: "description", content: "Essays, teardowns and case notes from the CodeSwipe team on product engineering, design and AI." },
-    ],
-  }),
-  component: BlogsPage,
-});
 
 const posts = [
   { cat: "Engineering", title: "Shipping a SaaS in 8 weeks without cutting corners", read: "6 min read", grad: "from-violet-200 to-indigo-100" },
@@ -23,7 +15,7 @@ const posts = [
   { cat: "Product", title: "Onboarding that turns trials into loyalty", read: "5 min read", grad: "from-yellow-200 to-orange-100" },
 ];
 
-function BlogsPage() {
+export default function BlogsPage() {
   return (
     <PageShell>
       <section className="bg-hero">
@@ -57,7 +49,7 @@ function BlogsPage() {
               <h3 className="mt-3 text-xl font-display font-semibold group-hover:text-gradient transition">
                 {p.title}
               </h3>
-              <Link to="/blogs" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
+              <Link href="/blogs" className="mt-4 inline-flex items-center gap-1 text-sm font-medium text-primary">
                 Read article <ArrowUpRight className="h-4 w-4" />
               </Link>
             </motion.article>

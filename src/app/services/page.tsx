@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Plus, Check } from "lucide-react";
@@ -7,19 +7,6 @@ import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { TechStackGrid, TechMarquee } from "@/components/site/TechIcons";
 import { SERVICE_CATALOG, INDUSTRIES, PROCESS_STEPS } from "@/lib/site-content";
 
-export const Route = createFileRoute("/services")({
-  head: () => ({
-    meta: [
-      { title: "IT Services — Web, React, Next.js, Shopify, AI | CodeSwipe" },
-      { name: "description", content: "20+ IT services: custom websites, React.js, Next.js, Shopify, WooCommerce, UI/UX, mobile apps, full stack, cloud & DevOps, AI/ML, CRM/ERP, SEO, APIs and SaaS development." },
-      { property: "og:title", content: "IT Services by CodeSwipe IT Solutions" },
-      { property: "og:description", content: "Custom development, eCommerce, AI, cloud, SaaS and marketing services delivered by one accountable team." },
-      { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary_large_image" },
-    ],
-  }),
-  component: ServicesPage,
-});
 
 const faqs = [
   { q: "How long does it take to complete a project?", a: "The timeline depends on scope and complexity. A standard business website typically takes 4–8 weeks, while custom web applications, SaaS platforms or complex solutions may require several weeks or months. We share a clear roadmap and timeline before development begins." },
@@ -30,7 +17,7 @@ const faqs = [
   { q: "How do we get started?", a: "Book a free consultation or send a quote request. We reply within one business day with a scope outline, timeline and estimate." },
 ];
 
-function ServicesPage() {
+export default function ServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
 
   return (

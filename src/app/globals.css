@@ -1,5 +1,4 @@
-@import "tailwindcss" source(none);
-@source "../src";
+@import "tailwindcss";
 @import "tw-animate-css";
 
 @custom-variant dark (&:is(.dark *));
@@ -86,6 +85,7 @@
 @layer base {
   * {
     border-color: var(--color-border);
+    box-sizing: border-box;
   }
   html {
     scroll-behavior: smooth;
@@ -105,6 +105,9 @@
   ::selection {
     background: color-mix(in oklab, var(--primary) 20%, transparent);
     color: var(--ink);
+  }
+  img {
+    max-width: 100%;
   }
 }
 

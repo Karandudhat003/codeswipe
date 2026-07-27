@@ -1,46 +1,46 @@
-import { Link, useRouterState } from "@tanstack/react-router";
+"use client";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Menu, X, ArrowUpRight } from "lucide-react";
 import logo from "@/assets/logo.png";
+import Image from "next/image";
 
 const links = [
-  { to: "/", label: "Home" },
-  { to: "/about", label: "About" },
-  { to: "/services", label: "Services" },
-  { to: "/portfolio", label: "Work" },
-  { to: "/hire-developers", label: "Hire Developers" },
-  { to: "/quote", label: "Get Quote" },
-  { to: "/careers", label: "Careers" },
-  { to: "/contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/services", label: "Services" },
+  { href: "/portfolio", label: "Portfolio" },
+  { href: "/hire-developers", label: "Hire Developers" },
+  { href: "/careers", label: "Careers" },
+  { href: "/contact", label: "Contact" },
 ] as const;
 
 export function Navbar() {
   const [open, setOpen] = useState(false);
-  const { location } = useRouterState();
-  const pathname = location.pathname;
+  const pathname = usePathname();
 
   return (
     <header className="sticky top-0 z-50 border-b border-border/50 bg-background/85 backdrop-blur-xl">
       <div className="mx-auto grid h-16 max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-4 px-4 sm:px-6 lg:px-8 xl:flex xl:justify-between">
-        <Link to="/" className="flex min-w-0 items-center" onClick={() => setOpen(false)}>
-          <img
+        <Link href="/" className="flex min-w-0 items-center" onClick={() => setOpen(false)}>
+          <Image
             src={logo}
             alt="CodeSwipe IT Solutions"
             className="h-6 w-auto sm:h-7 shrink-0"
-            width={1064}
-            height={230}
+            height={50}
+            priority
           />
         </Link>
 
-
         <nav className="hidden xl:flex items-center gap-0.5 rounded-full border border-border/60 bg-background/60 p-1 shadow-card">
           {links.map((l) => {
-            const active = pathname === l.to;
+            const active = pathname === l.href;
             return (
               <Link
-                key={l.to}
-                to={l.to}
+                key={l.href}
+                href={l.href}
                 className={`relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors ${
                   active
                     ? "text-primary-foreground"
@@ -62,7 +62,7 @@ export function Navbar() {
 
         <div className="flex shrink-0 items-center gap-2 sm:gap-3">
           <Link
-            to="/contact"
+            href="/contact"
             className="hidden sm:inline-flex items-center gap-1.5 rounded-full px-5 py-2.5 text-sm font-semibold text-primary-foreground transition hover:opacity-90"
             style={{ backgroundColor: "var(--ink)" }}
           >
@@ -79,7 +79,6 @@ export function Navbar() {
         </div>
       </div>
 
-
       <AnimatePresence>
         {open && (
           <motion.nav
@@ -91,11 +90,11 @@ export function Navbar() {
             <div className="flex flex-col p-4 gap-1">
               {links.map((l) => (
                 <Link
-                  key={l.to}
-                  to={l.to}
+                  key={l.href}
+                  href={l.href}
                   onClick={() => setOpen(false)}
                   className={`rounded-lg px-4 py-3 text-sm font-medium ${
-                    pathname === l.to
+                    pathname === l.href
                       ? "bg-accent text-accent-foreground"
                       : "text-muted-foreground hover:bg-muted"
                   }`}
@@ -104,14 +103,13 @@ export function Navbar() {
                 </Link>
               ))}
               <Link
-                to="/contact"
+                href="/contact"
                 onClick={() => setOpen(false)}
                 className="mt-2 inline-flex items-center justify-center gap-1.5 rounded-full bg-brand px-5 py-3 text-sm font-semibold text-primary-foreground shadow-brand"
               >
                 Start Your Project <ArrowUpRight className="h-4 w-4" />
               </Link>
             </div>
-
           </motion.nav>
         )}
       </AnimatePresence>

@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+"use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
@@ -12,17 +12,6 @@ import { Label } from "@/components/ui/label";
 import { Card, CardContent } from "@/components/ui/card";
 import { CONTACT, mailLink, waLink } from "@/lib/contact-info";
 
-export const Route = createFileRoute("/hire-developers")({
-  head: () => ({
-    meta: [
-      { title: "Hire Dedicated Developers — CodeSwipe IT Solutions" },
-      { name: "description", content: "Hire vetted full-stack, mobile, UI/UX, and AI developers from CodeSwipe. Flexible engagement, transparent pricing, and senior talent ready to ship." },
-      { property: "og:title", content: "Hire Dedicated Developers — CodeSwipe" },
-      { property: "og:description", content: "Senior developers, designers and product engineers on tap. Start in days, not months." },
-    ],
-  }),
-  component: HirePage,
-});
 
 const roles = [
   { icon: Code2, title: "Full-Stack Developer", stack: "React · TS · Node · Postgres", rate: "from ₹1.2L / mo" },
@@ -39,7 +28,7 @@ const perks = [
   { icon: ShieldCheck, title: "NDA & IP protected", desc: "All code, designs and IP transfer to you." },
 ];
 
-function HirePage() {
+export default function HirePage() {
   const [form, setForm] = useState({ name: "", email: "", company: "", role: "Full-Stack Developer", duration: "3 months", details: "" });
 
   const compose = () => {

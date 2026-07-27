@@ -234,9 +234,27 @@ export const PROCESS_STEPS = [
 ];
 
 export const INDUSTRIES = [
-  "Healthcare", "Education", "Finance", "Real Estate", "Retail", "eCommerce",
-  "Travel & Tourism", "Logistics", "Manufacturing", "Food & Restaurant",
-  "Automotive", "SaaS", "Startups", "Enterprise", "Government", "Non-Profit",
+  "Healthcare",
+  "Education",
+  "Finance & FinTech",
+  "E-commerce",
+  "Real Estate",
+  "Logistics & Transportation",
+  "Manufacturing",
+  "Hospitality",
+  "Travel & Tourism",
+  "Food & Restaurant",
+  "Retail",
+  "Automotive",
+  "Construction",
+  "Legal Services",
+  "Insurance",
+  "Media & Entertainment",
+  "Sports & Fitness",
+  "Human Resources",
+  "SaaS & Startups",
+  "Government & Public Sector",
+  "Non-Profit Organizations",
 ];
 
 export const WHY_CHOOSE_US = [
@@ -253,3 +271,4 @@ export const WHY_CHOOSE_US = [
   "Long-Term Technical Support",
   "Global Client Support",
 ];
+

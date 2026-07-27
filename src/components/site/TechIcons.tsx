@@ -1,3 +1,4 @@
+"use client";
 import { motion } from "framer-motion";
 import { MARQUEE_TECH, TECH_GROUPS } from "@/lib/site-content";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
