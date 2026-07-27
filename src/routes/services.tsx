@@ -1,67 +1,43 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Plus } from "lucide-react";
+import { Plus, Check } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import svcWeb from "@/assets/service-web.jpg";
-import svcMobile from "@/assets/service-mobile.jpg";
-import svcUiUx from "@/assets/service-uiux.jpg";
-import svcBackend from "@/assets/service-backend.jpg";
-import svcCloud from "@/assets/service-cloud.jpg";
-import svcAi from "@/assets/service-ai.jpg";
+import { TechStackGrid, TechMarquee } from "@/components/site/TechIcons";
+import { SERVICE_CATALOG, INDUSTRIES, PROCESS_STEPS } from "@/lib/site-content";
 
 export const Route = createFileRoute("/services")({
   head: () => ({
     meta: [
-      { title: "Services — CodeSwipe IT Solutions" },
-      { name: "description", content: "Web development, mobile apps, UI/UX design, backend & APIs, cloud infrastructure and AI solutions — engineered for modern brands." },
+      { title: "IT Services — Web, React, Next.js, Shopify, AI | CodeSwipe" },
+      { name: "description", content: "20+ IT services: custom websites, React.js, Next.js, Shopify, WooCommerce, UI/UX, mobile apps, full stack, cloud & DevOps, AI/ML, CRM/ERP, SEO, APIs and SaaS development." },
+      { property: "og:title", content: "IT Services by CodeSwipe IT Solutions" },
+      { property: "og:description", content: "Custom development, eCommerce, AI, cloud, SaaS and marketing services delivered by one accountable team." },
+      { property: "og:type", content: "website" },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
   }),
   component: ServicesPage,
 });
 
-const services = [
-  { n: "01", title: "Web Development", img: svcWeb, bullets: ["Custom Business Websites", "High-Performance Architecture", "SEO & Speed Optimization"], desc: "Build fast, scalable, and conversion-focused websites designed to strengthen your online presence and drive business growth." },
-  { n: "02", title: "Mobile App Development", img: svcMobile, bullets: ["iOS & Android Apps", "Cross-Platform Development", "App Store & Google Play Deployment"], desc: "Create intuitive mobile applications that deliver seamless experiences and help businesses connect with users on every device." },
-  { n: "03", title: "UI / UX Design", img: svcUiUx, bullets: ["User-Centered Design", "Interactive Prototypes", "Design Systems"], desc: "Craft engaging digital experiences with clean interfaces, thoughtful user journeys, and designs that convert visitors into customers." },
-  { n: "04", title: "Backend & API Development", img: svcBackend, bullets: ["REST API Development", "Authentication Systems", "Database Architecture"], desc: "Develop secure, scalable backend solutions that power applications, automate workflows, and ensure reliable performance." },
-  { n: "05", title: "Cloud Solutions", img: svcCloud, bullets: ["AWS & Vercel", "CI/CD Pipelines", "Cloud Deployment"], desc: "Modern cloud infrastructure optimized for scalability, deployment automation and enterprise reliability." },
-  { n: "06", title: "AI Solutions", img: svcAi, bullets: ["AI Automation", "Chatbot Systems", "Workflow Intelligence"], desc: "Practical AI systems and automation workflows designed to improve productivity and operational efficiency." },
-];
-
-const moreServices = [
-  { title: "E-commerce Development", desc: "Shopify, WooCommerce and custom storefronts with payments, inventory and analytics built in." },
-  { title: "SaaS Product Development", desc: "Multi-tenant SaaS platforms with subscriptions, roles, billing and admin dashboards." },
-  { title: "Custom Software / ERP & CRM", desc: "Internal tools, ERP modules and CRMs tailored to how your team actually operates." },
-  { title: "CMS & WordPress", desc: "Headless CMS or WordPress builds your marketing team can update without a developer." },
-  { title: "DevOps & CI/CD", desc: "Dockerised pipelines, automated testing, monitoring and zero-downtime deployments." },
-  { title: "QA & Automation Testing", desc: "Manual and automated QA with Playwright and Cypress across web and mobile." },
-  { title: "SEO & Performance", desc: "Core Web Vitals tuning, technical SEO, structured data and speed optimisation." },
-  { title: "Digital Marketing", desc: "Landing pages, campaign funnels, analytics setup and conversion rate optimisation." },
-  { title: "Maintenance & Support", desc: "Retainers with clear SLAs, security patching, backups and continuous improvements." },
-  { title: "Hire Dedicated Developers", desc: "Vetted senior engineers and designers embedded in your team, monthly or long-term." },
-  { title: "Data & Analytics", desc: "Dashboards, reporting pipelines and data warehousing to make decisions with evidence." },
-  { title: "Blockchain & Web3", desc: "Smart contracts, wallet integrations and token-powered platforms built securely." },
-];
-
-
 const faqs = [
-  { q: "How long does it take to complete a project?", a: "The timeline depends on scope, complexity and requirements. A standard business website typically takes 4–8 weeks, while custom web applications, SaaS platforms or complex solutions may require several weeks or months. We provide a clear project roadmap and timeline before development begins to ensure transparency throughout the process." },
-  { q: "Do you work with startups and enterprises?", a: "Yes. Our team is comfortable partnering with pre-seed founders and enterprise product teams alike. The engagement model, contracts and rituals adapt to the stage." },
-  { q: "What services does CodeSwipe provide?", a: "We provide end-to-end product engineering: strategy, UI/UX design, web, mobile, backend, cloud, DevOps and AI integrations." },
-  { q: "What technologies do you use?", a: "React, Next.js, TanStack, TypeScript, React Native, Flutter, Node.js, Python, Postgres, Supabase, Prisma, AWS and Vercel — chosen per project." },
-  { q: "Can you redesign existing websites or applications?", a: "Absolutely. Redesigns are a big part of our practice — we audit the current experience, propose a design direction and ship in incremental releases." },
-  { q: "Do you provide ongoing support after launch?", a: "Yes. We offer maintenance retainers with clear SLAs, monitoring, iteration sprints and feature roadmap execution." },
+  { q: "How long does it take to complete a project?", a: "The timeline depends on scope and complexity. A standard business website typically takes 4–8 weeks, while custom web applications, SaaS platforms or complex solutions may require several weeks or months. We share a clear roadmap and timeline before development begins." },
+  { q: "Do you work with startups and enterprises?", a: "Yes. We partner with pre-seed founders and enterprise product teams alike — the engagement model, contracts and rituals adapt to your stage." },
+  { q: "What technologies do you use?", a: "React, Next.js, TypeScript, React Native, Flutter, Node.js, NestJS, Laravel, Python, Postgres, MongoDB, Supabase, AWS, Vercel and Docker — chosen per project." },
+  { q: "Can you redesign existing websites or applications?", a: "Absolutely. We audit the current experience, propose a design direction and ship the redesign in incremental releases with zero downtime." },
+  { q: "Do you provide ongoing support after launch?", a: "Yes. We offer maintenance retainers with clear SLAs, monitoring, security patching, backups and continuous feature delivery." },
+  { q: "How do we get started?", a: "Book a free consultation or send a quote request. We reply within one business day with a scope outline, timeline and estimate." },
 ];
 
 function ServicesPage() {
   const [openFaq, setOpenFaq] = useState<number | null>(0);
+
   return (
     <PageShell>
       <section className="bg-hero">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-16 text-center">
-          <Reveal><Eyebrow>Our core services</Eyebrow></Reveal>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-14 text-center">
+          <Reveal><Eyebrow>Our services</Eyebrow></Reveal>
           <Reveal delay={0.1}>
             <h1 className="mt-6 text-4xl md:text-6xl font-display font-semibold">
               Crafting Scalable <span className="text-gradient">Digital Solutions</span> For Modern Brands
@@ -69,71 +45,111 @@ function ServicesPage() {
           </Reveal>
           <Reveal delay={0.2}>
             <p className="mt-5 max-w-2xl mx-auto text-muted-foreground">
-              From the first wireframe to the final deploy — our practice covers the entire surface area of modern product building.
+              20+ professional services covering websites, eCommerce, mobile, full stack, cloud, AI, CRM/ERP, marketing and SaaS — delivered by one accountable team.
             </p>
           </Reveal>
         </div>
+        <TechMarquee />
       </section>
 
-      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 space-y-6">
-        {services.map((s, i) => (
-          <Reveal key={s.title} delay={i * 0.05}>
-            <div className="group grid gap-6 md:grid-cols-[1fr_320px_1fr] md:items-center rounded-3xl border border-border bg-card p-6 md:p-8 shadow-card hover:shadow-brand transition-shadow">
-              <div>
-                <div className="text-xs font-display font-semibold text-primary">{s.n}</div>
-                <h3 className="mt-2 text-2xl font-display font-semibold">{s.title}</h3>
-                <ul className="mt-4 space-y-1.5 text-sm text-muted-foreground">
-                  {s.bullets.map((b) => (
-                    <li key={b} className="flex items-start gap-2">
-                      <span className="mt-2 h-1 w-1 rounded-full bg-primary" />{b}
-                    </li>
+      {/* FULL SERVICE CATALOGUE */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16">
+        <div className="grid gap-5 md:grid-cols-2">
+          {SERVICE_CATALOG.map((s, i) => (
+            <Reveal key={s.slug} delay={(i % 2) * 0.06}>
+              <motion.article
+                whileHover={{ y: -6 }}
+                id={s.slug}
+                className="h-full rounded-3xl border border-border bg-card p-7 shadow-card hover:shadow-brand transition-shadow"
+              >
+                <div className="flex items-start gap-4">
+                  <motion.span
+                    whileHover={{ rotate: 10, scale: 1.15 }}
+                    className="inline-flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-accent text-2xl"
+                  >
+                    {s.emoji}
+                  </motion.span>
+                  <div>
+                    <h2 className="font-display text-xl font-semibold">{s.title}</h2>
+                    <p className="mt-1.5 text-sm text-muted-foreground leading-relaxed">{s.tagline}</p>
+                  </div>
+                </div>
+
+                <ul className="mt-5 grid gap-2 sm:grid-cols-2">
+                  {s.items.map((it, j) => (
+                    <motion.li
+                      key={it}
+                      initial={{ opacity: 0, x: -8 }}
+                      whileInView={{ opacity: 1, x: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: j * 0.02 }}
+                      className="flex items-center gap-2 text-sm text-muted-foreground"
+                    >
+                      <span className="inline-flex h-4.5 w-4.5 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
+                        <Check className="h-3 w-3" />
+                      </span>
+                      {it}
+                    </motion.li>
                   ))}
                 </ul>
-              </div>
-              <div className="overflow-hidden rounded-2xl">
-                <motion.img
-                  whileHover={{ scale: 1.05 }}
-                  transition={{ duration: 0.6 }}
-                  src={s.img} alt={s.title} loading="lazy"
-                  className="h-56 w-full object-cover" width={800} height={800}
-                />
-              </div>
-              <p className="text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
-            </div>
-          </Reveal>
-        ))}
+              </motion.article>
+            </Reveal>
+          ))}
+        </div>
       </section>
 
+      {/* TECH STACK */}
+      <TechStackGrid />
+
+      {/* PROCESS */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16">
         <div className="text-center">
-          <Reveal><Eyebrow>Complete IT capability</Eyebrow></Reveal>
+          <Reveal><Eyebrow>Development process</Eyebrow></Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
-              Every service your business <span className="text-gradient">needs under one roof.</span>
+              A clear path from brief to <span className="text-gradient">long-term support.</span>
             </h2>
           </Reveal>
         </div>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-          {moreServices.map((m, i) => (
-            <Reveal key={m.title} delay={i * 0.04}>
-              <motion.div
-                whileHover={{ y: -5 }}
-                className="h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand transition-shadow"
-              >
-                <h3 className="font-display text-lg font-semibold">{m.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{m.desc}</p>
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          {PROCESS_STEPS.map((s, i) => (
+            <Reveal key={s.n} delay={i * 0.05}>
+              <motion.div whileHover={{ y: -5 }} className="h-full rounded-2xl border border-border bg-card p-6 shadow-card">
+                <div className="text-xs font-display font-semibold text-primary">{s.n}</div>
+                <h3 className="mt-2 font-display font-semibold">{s.title}</h3>
+                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
               </motion.div>
             </Reveal>
           ))}
         </div>
       </section>
 
+      {/* INDUSTRIES */}
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16 text-center">
+        <Reveal><Eyebrow>Industries we serve</Eyebrow></Reveal>
+        <div className="mt-8 flex flex-wrap justify-center gap-3">
+          {INDUSTRIES.map((ind, i) => (
+            <motion.span
+              key={ind}
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.03 }}
+              whileHover={{ y: -4 }}
+              className="rounded-full border border-border bg-card px-5 py-2.5 text-sm font-medium shadow-card hover:border-primary/40 hover:shadow-brand transition"
+            >
+              {ind}
+            </motion.span>
+          ))}
+        </div>
+      </section>
 
-      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-12">
+      {/* FAQ */}
+      <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-12">
         <div className="text-center">
           <Reveal><Eyebrow>FAQ</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-4 text-4xl md:text-5xl font-display font-semibold">
+            <h2 className="mt-4 text-3xl md:text-5xl font-display font-semibold">
               Answers To Help You Move Forward With <span className="text-gradient">Confidence</span>
             </h2>
           </Reveal>
