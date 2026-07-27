@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import { MapPin, Heart, Star, Target } from "lucide-react";
+import { MapPin, Heart, Star, Target, Check } from "lucide-react";
+import { TechStackGrid } from "@/components/site/TechIcons";
+import { WHY_CHOOSE_US } from "@/lib/site-content";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -118,6 +121,37 @@ function AboutPage() {
           ))}
         </div>
       </section>
+
+      <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24">
+        <div className="rounded-3xl border border-border bg-card p-8 md:p-12 shadow-card">
+          <Reveal>
+            <Eyebrow>Why choose us</Eyebrow>
+            <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
+              Reasons clients stay with <span className="text-gradient">CodeSwipe.</span>
+            </h2>
+          </Reveal>
+          <div className="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+            {WHY_CHOOSE_US.map((w, i) => (
+              <motion.div
+                key={w}
+                initial={{ opacity: 0, y: 10 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.04 }}
+                className="flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3 text-sm"
+              >
+                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
+                  <Check className="h-3.5 w-3.5" />
+                </span>
+                {w}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <TechStackGrid />
     </PageShell>
+
   );
 }
