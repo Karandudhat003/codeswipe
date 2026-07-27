@@ -220,7 +220,7 @@ export const TECH_GROUPS: { group: string; tech: { name: string; slug?: string }
 export const MARQUEE_TECH = [
   "react", "nextdotjs", "typescript", "nodedotjs", "tailwindcss", "flutter",
   "shopify", "wordpress", "laravel", "python", "docker", "huggingface",
-  "postgresql", "mongodb", "supabase", "openai", "figma", "stripe",
+  "postgresql", "mongodb", "supabase", "anthropic", "figma", "stripe",
 ];
 
 export const PROCESS_STEPS = [
