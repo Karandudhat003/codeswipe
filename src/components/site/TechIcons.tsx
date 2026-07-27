@@ -4,7 +4,18 @@ import { Reveal, Eyebrow } from "@/components/site/Reveal";
 
 const iconUrl = (slug: string) => `https://cdn.simpleicons.org/${slug}`;
 
-export function TechIcon({ slug, name, size = 28 }: { slug: string; name: string; size?: number }) {
+export function TechIcon({ slug, name, size = 28 }: { slug?: string; name: string; size?: number }) {
+  if (!slug) {
+    return (
+      <span
+        aria-hidden
+        style={{ width: size, height: size }}
+        className="inline-flex items-center justify-center rounded-md bg-brand text-[9px] font-semibold text-primary-foreground transition-transform duration-300 group-hover:scale-110"
+      >
+        {name.slice(0, 2).toUpperCase()}
+      </span>
+    );
+  }
   return (
     <img
       src={iconUrl(slug)}
@@ -17,6 +28,7 @@ export function TechIcon({ slug, name, size = 28 }: { slug: string; name: string
     />
   );
 }
+
 
 /** Infinite scrolling strip of animated technology icons. */
 export function TechMarquee() {
