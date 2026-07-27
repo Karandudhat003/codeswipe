@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import { MapPin, Heart, Star, Target } from "lucide-react";
+import { MapPin, Heart, Star, Target, Check } from "lucide-react";
+import { TechStackGrid } from "@/components/site/TechIcons";
+import { WHY_CHOOSE_US } from "@/lib/site-content";
+
 
 export const Route = createFileRoute("/about")({
   head: () => ({
