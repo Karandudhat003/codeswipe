@@ -133,6 +133,23 @@ export default function ServicesPage() {
 
       {/* FAQ */}
       <section className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 pb-12">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: faqs.map((f) => ({
+                '@type': 'Question',
+                name: f.q,
+                acceptedAnswer: {
+                  '@type': 'Answer',
+                  text: f.a,
+                },
+              })),
+            }),
+          }}
+        />
         <div className="text-center">
           <Reveal><Eyebrow>FAQ</Eyebrow></Reveal>
           <Reveal delay={0.1}>

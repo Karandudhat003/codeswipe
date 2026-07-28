@@ -503,6 +503,97 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── FAQ SECTION WITH FAQPAGE SCHEMA ──────────────────────────────── */}
+      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20" aria-label="Frequently asked questions">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: [
+                {
+                  '@type': 'Question',
+                  name: 'Why should agencies and global businesses partner with CodeSwipe IT Solutions?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'CodeSwipe IT Solutions is a top-rated IT development company in India providing full-stack web, mobile app, and AI development with 100% code ownership, agile sprints, and transparent pricing.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'What services does CodeSwipe IT Solutions offer?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'We specialize in Web Development (React, Next.js), Mobile App Development (Flutter, React Native), AI & Machine Learning Solutions, SaaS Engineering, Shopify eCommerce, and WordPress Customization.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'Can digital agencies hire dedicated developers or white-label services from CodeSwipe?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'Yes! We offer white-label development partnerships for agencies worldwide, providing dedicated developers and project managers on flexible monthly plans.',
+                  },
+                },
+                {
+                  '@type': 'Question',
+                  name: 'How does CodeSwipe guarantee code quality and security?',
+                  acceptedAnswer: {
+                    '@type': 'Answer',
+                    text: 'We conduct peer code reviews, automated testing, OWASP security checks, and rigorous QA testing before every deployment.',
+                  },
+                },
+              ],
+            }),
+          }}
+        />
+
+        <div className="text-center mb-12">
+          <Reveal><Eyebrow>Frequently Asked Questions</Eyebrow></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="mt-4 text-3xl md:text-5xl font-display font-semibold">
+              Got Questions? <span className="text-gradient">We Have Answers.</span>
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="space-y-4">
+          {[
+            {
+              q: "Why should agencies and global businesses partner with CodeSwipe IT Solutions?",
+              a: "CodeSwipe IT Solutions is a top-rated software agency based in India. We provide dedicated full-stack development teams (React, Next.js, Flutter, Node.js, AI, Shopify, WordPress) with 100% IP ownership, transparent communication, and agile weekly deliverables."
+            },
+            {
+              q: "What technical services does CodeSwipe IT Solutions specialize in?",
+              a: "We offer end-to-end IT services: Custom Web App Development, Cross-Platform Mobile Apps (iOS & Android), AI & LLM Integrations, SaaS Product Development, Shopify Stores, WordPress Websites, and UI/UX Design."
+            },
+            {
+              q: "Can we hire dedicated remote developers or white-label services?",
+              a: "Yes! We work as offshore development partners for digital agencies across USA, UK, UAE, Canada, and Australia. You can hire dedicated full-stack engineers, frontend specialists, or full project teams."
+            },
+            {
+              q: "How fast can CodeSwipe kick off a new development project?",
+              a: "We can onboard and kick off your project within 24 to 48 hours. After an initial scope discussion, we assign a dedicated project manager and start weekly sprints immediately."
+            }
+          ].map((item, idx) => (
+            <Reveal key={item.q} delay={idx * 0.05}>
+              <div className="rounded-2xl border border-border bg-card p-6 shadow-card">
+                <h3 className="font-display font-semibold text-lg text-foreground flex items-center gap-3">
+                  <span className="inline-flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-accent text-xs font-bold text-primary">
+                    Q{idx + 1}
+                  </span>
+                  {item.q}
+                </h3>
+                <p className="mt-3 text-sm text-muted-foreground leading-relaxed pl-10">
+                  {item.a}
+                </p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </section>
+
       {/* ── WHATSAPP CTA BANNER ─────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-16" aria-label="WhatsApp CTA">
         <motion.div

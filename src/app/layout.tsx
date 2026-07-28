@@ -18,30 +18,28 @@ const baseUrl = 'https://codeswipeitsolutions.com';
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-    default: 'CodeSwipe IT Solutions | Best IT Company in India | Web & App Development',
+    default: 'CodeSwipe IT Solutions | Best IT Company in India | Web, Mobile App & AI Development',
     template: '%s | CodeSwipe IT Solutions',
   },
   description:
-    'CodeSwipe IT Solutions — Top-rated IT company in India offering custom web development, mobile app development, AI solutions, UI/UX design, SaaS development and digital transformation services. Trusted by 50+ global clients.',
+    'CodeSwipe IT Solutions — Top-rated IT company & digital product agency in India. We offer custom web app development, mobile app development, AI solutions, UI/UX design, SaaS development, Shopify & WordPress solutions for startups and enterprises worldwide.',
   keywords: [
-    'IT company India',
-    'web development company',
-    'mobile app development India',
-    'software development company',
-    'best IT company',
-    'React development',
-    'Next.js development',
-    'Flutter app development',
-    'AI development company',
-    'SaaS development',
-    'UI UX design company',
     'CodeSwipe IT Solutions',
-    'digital transformation',
-    'custom software development',
-    'ecommerce development',
-    'hire developers India',
-    'IT agency India',
-    'full stack development',
+    'IT company India',
+    'best IT company in India',
+    'web development company India',
+    'mobile app development company',
+    'React development agency',
+    'Next.js development company',
+    'Flutter app development India',
+    'AI development company',
+    'Shopify development agency',
+    'WordPress development company',
+    'SaaS development agency',
+    'UI UX design agency',
+    'custom software development India',
+    'hire offshore developers India',
+    'full stack development services',
   ],
   authors: [{ name: 'CodeSwipe IT Solutions', url: baseUrl }],
   creator: 'CodeSwipe IT Solutions',
@@ -62,9 +60,9 @@ export const metadata: Metadata = {
     locale: 'en_IN',
     url: baseUrl,
     siteName: 'CodeSwipe IT Solutions',
-    title: 'CodeSwipe IT Solutions | Best IT Company in India',
+    title: 'CodeSwipe IT Solutions | Top IT & Digital Solutions Agency',
     description:
-      'Top-rated IT company in India. We build world-class web apps, mobile apps, AI solutions, SaaS platforms and custom software for businesses worldwide.',
+      'Leading IT company in India specializing in Web Development, Mobile Apps, AI Solutions, SaaS, Shopify & WordPress. Transform your business with high-performance digital products.',
     images: [
       {
         url: `${baseUrl}/og-image.png`,
@@ -76,7 +74,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'CodeSwipe IT Solutions | Best IT Company in India',
+    title: 'CodeSwipe IT Solutions | Top IT & Digital Solutions Agency',
     description:
       'Top-rated IT company in India. Web apps, mobile apps, AI, SaaS & custom software.',
     images: [`${baseUrl}/og-image.png`],
@@ -92,37 +90,94 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const jsonLd = {
+  const orgSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Organization',
+    '@type': 'ProfessionalService',
     name: 'CodeSwipe IT Solutions',
     url: baseUrl,
     logo: `${baseUrl}/logo.png`,
+    image: `${baseUrl}/og-image.png`,
     description:
-      'Top-rated IT company in India offering web development, mobile app development, AI solutions and SaaS development.',
-    contactPoint: {
-      '@type': 'ContactPoint',
-      telephone: '+91-90545-12976',
-      contactType: 'customer service',
-      availableLanguage: ['English', 'Hindi', 'Gujarati'],
-    },
+      'Top-rated IT company in India offering custom web development, mobile app development, AI solutions, UI/UX design and SaaS development.',
+    telephone: '+91-90545-12976',
+    priceRange: '$$',
     address: {
       '@type': 'PostalAddress',
       addressCountry: 'IN',
     },
+    contactPoint: [
+      {
+        '@type': 'ContactPoint',
+        telephone: '+91-90545-12976',
+        contactType: 'customer service',
+        availableLanguage: ['English', 'Hindi', 'Gujarati'],
+      },
+      {
+        '@type': 'ContactPoint',
+        telephone: '+91-72650-25017',
+        contactType: 'sales',
+        availableLanguage: ['English', 'Hindi', 'Gujarati'],
+      },
+    ],
     sameAs: [
       'https://twitter.com/codeswipe',
       'https://linkedin.com/company/codeswipe',
       'https://instagram.com/codeswipe',
     ],
-    foundingDate: '2022',
-    numberOfEmployees: { '@type': 'QuantitativeValue', value: 15 },
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: '4.9',
-      ratingCount: '48',
+    areaServed: ['US', 'IN', 'GB', 'AE', 'CA', 'AU'],
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'IT & Software Development Services',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Web Development (React / Next.js)',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Mobile App Development (Flutter / React Native)',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI & Machine Learning Solutions',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Shopify & eCommerce Development',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'WordPress & Custom Web Solutions',
+          },
+        },
+      ],
     },
-    serviceArea: { '@type': 'GeoShape', name: 'Worldwide' },
+  };
+
+  const websiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'CodeSwipe IT Solutions',
+    url: baseUrl,
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: `${baseUrl}/search?q={search_term_string}`,
+      'query-input': 'required name=search_term_string',
+    },
   };
 
   return (
@@ -133,7 +188,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="icon" href="/favicon.ico" sizes="any" />
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
       <body>{children}</body>
