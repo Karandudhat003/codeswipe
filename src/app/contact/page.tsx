@@ -63,8 +63,8 @@ export default function ContactPage() {
           <div className="space-y-6">
             {[
               { icon: Mail, label: "Email", value: CONTACT.email, href: `mailto:${CONTACT.email}` },
-              { icon: Phone, label: "Phone Number 1", value: "+91 90545 12976", href: "tel:+919054512976" },
-              { icon: Phone, label: "Phone Number 2 / WhatsApp", value: "+91 72650 25017", href: "tel:+917265025017" },
+              { icon: Phone, label: "Phone Number 1 (Primary)", value: CONTACT.phone1, href: `tel:${CONTACT.phone1.replace(/\s+/g, '')}` },
+              { icon: Phone, label: "Phone Number 2 / WhatsApp", value: CONTACT.phone2, href: `tel:${CONTACT.phone2.replace(/\s+/g, '')}` },
             ].map((c) => (
               <a key={c.label} href={c.href} className="flex items-start gap-4 rounded-2xl border border-border bg-card p-5 shadow-card hover:border-primary/40 transition">
                 <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary shrink-0">
@@ -96,22 +96,22 @@ export default function ContactPage() {
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="text-xs uppercase tracking-widest text-muted-foreground">Full Name *</label>
-                <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="e.g. Karan Dudhat" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
+                <input required value={formData.name} onChange={e => setFormData({...formData, name: e.target.value})} placeholder="e.g. John Doe" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
               </div>
               <div>
                 <label className="text-xs uppercase tracking-widest text-muted-foreground">Email Address *</label>
-                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="you@company.com" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
+                <input required type="email" value={formData.email} onChange={e => setFormData({...formData, email: e.target.value})} placeholder="e.g. john@company.com" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
               </div>
             </div>
 
             <div className="grid gap-4 sm:grid-cols-2">
               <div>
                 <label className="text-xs uppercase tracking-widest text-muted-foreground">Phone Number *</label>
-                <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="+91 98765 43210" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
+                <input required type="tel" value={formData.phone} onChange={e => setFormData({...formData, phone: e.target.value})} placeholder="e.g. +91 98765 43210" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
               </div>
               <div>
                 <label className="text-xs uppercase tracking-widest text-muted-foreground">Company Name</label>
-                <input value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} placeholder="Company Ltd." className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
+                <input value={formData.company} onChange={e => setFormData({...formData, company: e.target.value})} placeholder="e.g. Acme Tech Solutions" className="mt-2 w-full rounded-full border border-input bg-background px-4 py-3 text-sm outline-none focus:border-primary transition" />
               </div>
             </div>
 

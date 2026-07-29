@@ -162,7 +162,7 @@ export function Footer() {
                   className="flex items-start gap-2 text-white/70 hover:text-white transition"
                 >
                   <Phone className="h-4 w-4 mt-0.5 shrink-0" />
-                  <span>+91 90545 12976</span>
+                  <span>{CONTACT.phone1}</span>
                 </a>
               </li>
               <li>
@@ -171,7 +171,7 @@ export function Footer() {
                   className="flex items-start gap-2 text-white/70 hover:text-white transition"
                 >
                   <Phone className="h-4 w-4 mt-0.5 shrink-0" />
-                  <span>+91 72650 25017</span>
+                  <span>{CONTACT.phone2}</span>
                 </a>
               </li>
             </ul>

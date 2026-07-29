@@ -1,9 +1,9 @@
 // Central place to update your contact details.
 export const CONTACT = {
   whatsapp: "917265025017", // +91 72650 25017 — digits only with country code
-  phone1: "+91 90545 12976",
-  phone2: "+91 72650 25017",
-  phone: "+91 90545 12976 / +91 72650 25017",
+  phone1: "+91 72650 25017",
+  phone2: "+91 90545 12976",
+  phone: "+91 72650 25017 / +91 90545 12976",
   email: "contact.codeswipe@gmail.com",
 };
 
