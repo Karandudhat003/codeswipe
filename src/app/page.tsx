@@ -14,6 +14,7 @@ import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { TechMarquee, TechStackGrid } from "@/components/site/TechIcons";
 import { SERVICE_CATALOG, PROCESS_STEPS, WHY_CHOOSE_US } from "@/lib/site-content";
+import { HeroBackgroundGrid, HeroShadcnInteractiveShowcase } from "@/components/ui/hero-background";
 import team from "@/assets/team.jpg";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -26,8 +27,6 @@ const features = [
   { icon: Layers, title: "Scalable Architecture", desc: "Systems built to grow — from your first user to your millionth, seamlessly." },
   { icon: Sparkles, title: "Pixel-Perfect UI/UX", desc: "Interfaces your users love. Every pixel considered, every motion earned." },
 ];
-
-
 
 const INDUSTRIES_WITH_IMAGES = [
   { name: "Healthcare", icon: HeartPulse, img: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=600&q=80", desc: "HIPAA-compliant health platforms, telemedicine, EMR systems." },
@@ -85,8 +84,6 @@ const agencyReasons = [
   { icon: MessageCircle, title: "Direct Communication", desc: "Dedicated project manager. WhatsApp, Slack, or Zoom — always reachable." },
 ];
 
-
-
 // ─── Industry Card ─────────────────────────────────────────────────────────────
 function IndustryCard({ ind, index }: { ind: (typeof INDUSTRIES_WITH_IMAGES)[0]; index: number }) {
   const ref = useRef(null);
@@ -131,75 +128,68 @@ export default function HomePage() {
   return (
     <PageShell>
       {/* ── HERO ────────────────────────────────────────────────────────── */}
-      <section className="relative overflow-hidden bg-hero" aria-label="Hero">
-        <div className="pointer-events-none absolute -top-32 left-1/2 h-[520px] w-[520px] -translate-x-1/2 rounded-full bg-brand opacity-15 blur-3xl" aria-hidden />
-        <div className="pointer-events-none absolute top-1/2 right-0 h-[300px] w-[300px] rounded-full bg-primary-glow opacity-10 blur-3xl" aria-hidden />
+      <section className="relative overflow-hidden bg-hero border-b border-border/60" aria-label="Hero">
+        <HeroBackgroundGrid />
 
-        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pt-20 pb-20 md:pt-32 md:pb-28 text-center">
-          <Reveal>
-            <div className="flex justify-center">
-              <Eyebrow>🏆 India's Trusted IT Solutions Partner</Eyebrow>
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-28 md:pb-28">
+          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+            {/* Left Column: Text & CTAs */}
+            <div className="text-center lg:text-left">
+              <Reveal>
+                <div className="flex justify-center lg:justify-start">
+                  <Eyebrow>🏆 India's Premier IT & Digital Product Studio</Eyebrow>
+                </div>
+              </Reveal>
+
+              <Reveal delay={0.1}>
+                <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.05] tracking-tight">
+                  Engineering Your Next{" "}
+                  <span className="text-gradient italic">Category-Defining</span>
+                  <br /> Digital Solution.
+                </h1>
+              </Reveal>
+
+              <Reveal delay={0.2}>
+                <p className="mt-6 max-w-xl mx-auto lg:mx-0 text-base sm:text-lg text-muted-foreground leading-relaxed">
+                  We build high-performance <strong>Web Apps, Mobile Apps, AI Systems, SaaS Platforms</strong> and Custom Software for startups and enterprises worldwide.
+                </p>
+              </Reveal>
+
+              <Reveal delay={0.25}>
+                <ul className="mt-6 flex flex-wrap justify-center lg:justify-start gap-2">
+                  {heroPoints.map((p) => (
+                    <li key={p} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/80 backdrop-blur px-3.5 py-1.5 text-xs font-medium shadow-sm">
+                      <Check className="h-3.5 w-3.5 text-primary" /> {p}
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
+
+              <Reveal delay={0.3}>
+                <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-4">
+                  <Link
+                    href="/services"
+                    className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/90 backdrop-blur px-8 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-card hover:shadow-brand hover:-translate-y-0.5"
+                  >
+                    Discover More
+                    <ArrowUpRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                  <Link
+                    href="/contact"
+                    className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
+                  >
+                    Let's Talk
+                    <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                  </Link>
+                </div>
+              </Reveal>
             </div>
-          </Reveal>
-          <Reveal delay={0.1}>
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-7xl font-display font-bold leading-[1.04] tracking-tight">
-              Transforming Ideas into{" "}
-              <span className="text-gradient italic">Powerful Digital</span>
-              <br className="hidden sm:block" /> Solutions
-            </h1>
-          </Reveal>
-          <Reveal delay={0.2}>
-            <p className="mt-6 mx-auto max-w-2xl text-base sm:text-xl text-muted-foreground leading-relaxed">
-              We build world-class <strong>web apps, mobile apps, AI systems, SaaS platforms</strong> and custom software that help startups and enterprises grow faster.
-            </p>
-          </Reveal>
-          <Reveal delay={0.25}>
-            <p className="mt-3 mx-auto max-w-2xl text-sm text-muted-foreground">
-              Trusted by <strong>50+ businesses</strong> across India, USA, UK, UAE and Canada — delivering results since 2022.
-            </p>
-          </Reveal>
 
-          <Reveal delay={0.3}>
-            <ul className="mt-8 flex flex-wrap justify-center gap-2.5">
-              {heroPoints.map((p) => (
-                <li key={p} className="inline-flex items-center gap-1.5 rounded-full border border-border bg-background/70 backdrop-blur px-3.5 py-1.5 text-xs font-medium">
-                  <Check className="h-3.5 w-3.5 text-primary" /> {p}
-                </li>
-              ))}
-            </ul>
-          </Reveal>
-
-          <Reveal delay={0.35}>
-            <div className="mt-9 flex flex-wrap justify-center gap-4">
-              <Link
-                href="/services"
-                className="group inline-flex items-center gap-2 rounded-full border border-border bg-background/80 backdrop-blur px-8 py-3.5 text-sm font-semibold transition-all duration-300 hover:border-primary/50 hover:bg-card hover:shadow-card hover:-translate-y-0.5"
-              >
-                Discover More
-                <ArrowUpRight className="h-4 w-4 text-primary transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-              <Link
-                href="/contact"
-                className="group inline-flex items-center gap-2 rounded-full bg-brand px-8 py-3.5 text-sm font-semibold text-white shadow-brand transition-all duration-300 hover:-translate-y-0.5 hover:opacity-90"
-              >
-                Let's Talk
-                <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
+            {/* Right Column: Interactive Shadcn UI Showcase */}
+            <div className="relative flex justify-center">
+              <HeroShadcnInteractiveShowcase />
             </div>
-          </Reveal>
-
-          <Reveal delay={0.45}>
-            <motion.div
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-              className="mt-14 flex flex-col items-center gap-2 text-muted-foreground"
-            >
-              <span className="text-[10px] uppercase tracking-[0.3em]">Scroll</span>
-              <span className="h-10 w-6 rounded-full border border-border flex items-start justify-center p-1">
-                <span className="h-2 w-1 rounded-full bg-primary animate-bounce" />
-              </span>
-            </motion.div>
-          </Reveal>
+          </div>
         </div>
       </section>
 
