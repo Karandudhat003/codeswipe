@@ -15,8 +15,9 @@ import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { TechMarquee, TechStackGrid } from "@/components/site/TechIcons";
 import { SERVICE_CATALOG, PROCESS_STEPS, WHY_CHOOSE_US } from "@/lib/site-content";
 import { HeroBackgroundGrid, HeroShadcnInteractiveShowcase } from "@/components/ui/hero-background";
-import heroRight from "@/assets/hero-right.png";
 import team from "@/assets/team.jpg";
+
+const heroRight = "/hero-right.png";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
 
@@ -212,6 +213,8 @@ export default function HomePage() {
                   <Image
                     src={heroRight}
                     alt="CodeSwipe IT Solutions — 3D Developer Character"
+                    width={600}
+                    height={700}
                     priority
                     className="relative z-10 w-auto h-[340px] sm:h-[420px] lg:h-[500px] xl:h-[560px] object-contain drop-shadow-2xl"
                   />
