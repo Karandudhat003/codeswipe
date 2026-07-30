@@ -15,6 +15,7 @@ import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { TechMarquee, TechStackGrid } from "@/components/site/TechIcons";
 import { SERVICE_CATALOG, PROCESS_STEPS, WHY_CHOOSE_US } from "@/lib/site-content";
 import { HeroBackgroundGrid, HeroShadcnInteractiveShowcase } from "@/components/ui/hero-background";
+import heroRight from "@/assets/hero-right.png";
 import team from "@/assets/team.jpg";
 
 // ─── Data ────────────────────────────────────────────────────────────────────
@@ -131,10 +132,10 @@ export default function HomePage() {
       <section className="relative overflow-hidden bg-hero border-b border-border/60" aria-label="Hero">
         <HeroBackgroundGrid />
 
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 md:pt-28 md:pb-28">
-          <div className="grid gap-12 lg:grid-cols-2 lg:items-center">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-14 pb-0 md:pt-24">
+          <div className="grid gap-8 lg:grid-cols-2 lg:items-end">
             {/* Left Column: Text & CTAs */}
-            <div className="text-center lg:text-left">
+            <div className="text-center lg:text-left pb-16 md:pb-24">
               <Reveal>
                 <div className="flex justify-center lg:justify-start">
                   <Eyebrow>🏆 India's Premier IT & Digital Product Studio</Eyebrow>
@@ -185,9 +186,106 @@ export default function HomePage() {
               </Reveal>
             </div>
 
-            {/* Right Column: Interactive Shadcn UI Showcase */}
-            <div className="relative flex justify-center">
-              <HeroShadcnInteractiveShowcase />
+            {/* Right Column: 3D Character Hero Image */}
+            <div className="relative flex justify-center lg:justify-end items-end">
+              <motion.div
+                initial={{ opacity: 0, y: 50, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                transition={{ duration: 0.9, ease: [0.23, 1, 0.32, 1], delay: 0.2 }}
+                className="relative"
+              >
+                {/* Floating animation wrapper */}
+                <motion.div
+                  animate={{ y: [0, -14, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                  className="relative"
+                >
+                  {/* Glow ring behind character */}
+                  <div
+                    className="absolute bottom-10 left-1/2 -translate-x-1/2 w-64 h-64 rounded-full opacity-30 blur-3xl pointer-events-none"
+                    style={{
+                      background: "radial-gradient(circle, oklch(0.374 0.24 272 / 0.6), oklch(0.598 0.23 286 / 0.4) 50%, transparent 75%)",
+                    }}
+                  />
+
+                  {/* Character image */}
+                  <Image
+                    src={heroRight}
+                    alt="CodeSwipe IT Solutions — 3D Developer Character"
+                    priority
+                    className="relative z-10 w-auto h-[340px] sm:h-[420px] lg:h-[500px] xl:h-[560px] object-contain drop-shadow-2xl"
+                  />
+
+                  {/* Bottom blur shadow — depth effect */}
+                  <div
+                    className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-3/4 h-10 rounded-full pointer-events-none"
+                    style={{
+                      background: "radial-gradient(ellipse at center, oklch(0.374 0.24 272 / 0.35) 0%, transparent 70%)",
+                      filter: "blur(12px)",
+                    }}
+                  />
+                </motion.div>
+
+                {/* Floating badge: Projects Delivered */}
+                <motion.div
+                  initial={{ opacity: 0, x: -30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.9 }}
+                  className="absolute top-10 -left-4 sm:-left-10 z-20"
+                >
+                  <motion.div
+                    animate={{ y: [0, -6, 0] }}
+                    transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
+                    className="flex items-center gap-2 rounded-2xl glass border shadow-3d px-3.5 py-2.5 text-xs font-semibold"
+                  >
+                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary text-white text-[11px] font-black">50+</span>
+                    <div>
+                      <div className="font-bold text-foreground text-[11px]">Projects</div>
+                      <div className="text-[10px] text-muted-foreground">Delivered</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Floating badge: Client Rating */}
+                <motion.div
+                  initial={{ opacity: 0, x: 30 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 1.1 }}
+                  className="absolute top-1/3 -right-4 sm:-right-10 z-20"
+                >
+                  <motion.div
+                    animate={{ y: [0, -8, 0] }}
+                    transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                    className="flex items-center gap-2 rounded-2xl glass border shadow-3d px-3.5 py-2.5 text-xs"
+                  >
+                    <span className="text-amber-400 text-base">⭐</span>
+                    <div>
+                      <div className="font-bold text-foreground text-[11px]">4.9 / 5</div>
+                      <div className="text-[10px] text-muted-foreground">Client Rating</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+
+                {/* Floating badge: Happy Clients */}
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 1.3 }}
+                  className="absolute bottom-20 -left-4 sm:-left-10 z-20"
+                >
+                  <motion.div
+                    animate={{ y: [0, -5, 0] }}
+                    transition={{ duration: 4, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+                    className="flex items-center gap-2 rounded-2xl glass border shadow-3d px-3.5 py-2.5 text-xs"
+                  >
+                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-emerald-100 text-emerald-600 text-sm">✓</span>
+                    <div>
+                      <div className="font-bold text-foreground text-[11px]">100%</div>
+                      <div className="text-[10px] text-muted-foreground">Satisfaction</div>
+                    </div>
+                  </motion.div>
+                </motion.div>
+              </motion.div>
             </div>
           </div>
         </div>
@@ -296,33 +394,8 @@ export default function HomePage() {
           </Reveal>
 
           <Reveal delay={0.1}>
-            <div className="rounded-3xl border border-border bg-card p-7 shadow-card">
-              <h3 className="font-display text-lg font-semibold mb-5">Why Our Clients Trust Us</h3>
-              <div className="grid gap-2.5 sm:grid-cols-2">
-                {WHY_CHOOSE_US.map((w, i) => (
-                  <motion.div
-                    key={w}
-                    initial={{ opacity: 0, x: -10 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.05 }}
-                    className="flex items-center gap-2 text-sm text-muted-foreground"
-                  >
-                    <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
-                      <Check className="h-3 w-3" />
-                    </span>
-                    {w}
-                  </motion.div>
-                ))}
-              </div>
-              <Image
-                src={team}
-                alt="CodeSwipe development team building digital products"
-                loading="lazy"
-                width={1200}
-                height={800}
-                className="mt-6 rounded-2xl w-full h-48 object-cover"
-              />
+            <div className="relative flex justify-center lg:justify-end">
+              <HeroShadcnInteractiveShowcase />
             </div>
           </Reveal>
         </div>
