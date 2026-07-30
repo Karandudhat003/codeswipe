@@ -2,9 +2,14 @@
 import { motion } from "framer-motion";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
-import { MapPin, Heart, Star, Target, Check } from "lucide-react";
+import { MapPin, Heart, Star, Target, Check, ArrowRight } from "lucide-react";
 import { TechStackGrid } from "@/components/site/TechIcons";
 import { WHY_CHOOSE_US } from "@/lib/site-content";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
+import Link from "next/link";
 
 const grid = [
   { title: "Our Mission", body: "To help ambitious teams turn ideas into world-class digital products — without the agency drama." },
@@ -52,12 +57,15 @@ export default function AboutPage() {
         <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
           {grid.map((g, i) => (
             <Reveal key={g.title} delay={i * 0.05}>
-              <motion.div
-                whileHover={{ y: -4 }}
-                className="rounded-2xl border border-border bg-card p-8 shadow-card h-full"
-              >
-                <h3 className="text-primary text-xs font-display font-semibold uppercase tracking-widest">{g.title}</h3>
-                <p className="mt-4 text-sm text-muted-foreground leading-relaxed">{g.body}</p>
+              <motion.div whileHover={{ y: -4 }} className="h-full">
+                <Card className="h-full border-border shadow-card hover:border-primary/30 hover:shadow-brand transition-all">
+                  <CardHeader className="pb-2">
+                    <Badge variant="outline" className="w-fit text-primary border-primary/30 bg-primary/5 text-[10px] uppercase tracking-widest">{g.title}</Badge>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{g.body}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             </Reveal>
           ))}
@@ -76,12 +84,18 @@ export default function AboutPage() {
         <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {principles.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.08}>
-              <motion.div whileHover={{ y: -6 }} className="rounded-2xl border border-border bg-card p-6 shadow-card h-full">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 font-display font-semibold text-lg">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+              <motion.div whileHover={{ y: -6 }} className="h-full">
+                <Card className="h-full border-border shadow-card hover:border-primary/30 hover:shadow-brand transition-all">
+                  <CardHeader>
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary">
+                      <p.icon className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="mt-4 font-display text-lg">{p.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             </Reveal>
           ))}
@@ -105,14 +119,24 @@ export default function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.04 }}
-                className="flex items-center gap-3 rounded-xl border border-border bg-background px-4 py-3 text-sm"
               >
-                <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
-                  <Check className="h-3.5 w-3.5" />
-                </span>
-                {w}
+                <Badge variant="outline" className="flex items-center gap-2 rounded-xl border-border bg-background px-4 py-2.5 text-sm font-normal w-full justify-start cursor-default hover:border-primary/40 transition-colors">
+                  <span className="inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-accent text-primary">
+                    <Check className="h-3 w-3" />
+                  </span>
+                  {w}
+                </Badge>
               </motion.div>
             ))}
+          </div>
+          <Separator className="my-8" />
+          <div className="flex flex-wrap gap-3">
+            <Button asChild size="lg" className="rounded-full bg-brand hover:bg-brand/90 text-white shadow-brand">
+              <Link href="/contact">Start a Project <ArrowRight className="h-4 w-4" /></Link>
+            </Button>
+            <Button asChild variant="outline" size="lg" className="rounded-full">
+              <Link href="/portfolio">View Our Work</Link>
+            </Button>
           </div>
         </div>
       </section>
