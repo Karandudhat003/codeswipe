@@ -142,7 +142,7 @@ export default function HomePage() {
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h1 className="mt-6 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.05] tracking-tight">
+                <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.08] tracking-tight">
                   Engineering Your Next{" "}
                   <span className="text-gradient italic">Category-Defining</span>
                   <br /> Digital Solution.
@@ -204,6 +204,34 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ── STATS ────────────────────────────────────────────────────────── */}
+      <section className="border-b border-border" aria-label="Stats">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
+            {[
+              { value: "50+", label: "Projects Delivered", color: "text-primary" },
+              { value: "15+", label: "Expert Engineers", color: "text-violet-600" },
+              { value: "100%", label: "Client Satisfaction", color: "text-emerald-600" },
+              { value: "4+", label: "Years of Excellence", color: "text-amber-600" },
+            ].map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.1 }}
+                className="text-center group cursor-default"
+              >
+                <div className={`text-3xl sm:text-4xl font-display font-black tracking-tight ${s.color} group-hover:scale-110 transition-transform duration-300`}>
+                  {s.value}
+                </div>
+                <div className="mt-1 text-xs sm:text-sm text-muted-foreground font-medium">{s.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* ── WHY AGENCIES & CLIENTS CHOOSE US ───────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-24" aria-label="Why choose CodeSwipe">
         <div className="text-center mb-14">
@@ -224,13 +252,17 @@ export default function HomePage() {
           {agencyReasons.map((r, i) => (
             <Reveal key={r.title} delay={(i % 4) * 0.07}>
               <motion.div
-                whileHover={{ y: -6, borderColor: "var(--primary)" }}
-                className="h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 group"
+                whileHover={{ y: -8 }}
+                className="card-3d h-full rounded-2xl border border-border bg-card p-6 shadow-card transition-all duration-300 group relative overflow-hidden"
               >
-                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-accent text-primary transition-colors duration-300 group-hover:bg-brand group-hover:text-white">
+                {/* subtle gradient shimmer on hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.04), transparent 60%)" }}
+                />
+                <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/40 text-primary transition-all duration-300 group-hover:shadow-brand group-hover:from-primary group-hover:to-primary-glow group-hover:text-white">
                   <r.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-display font-semibold">{r.title}</h3>
+                <h3 className="mt-5 font-display font-semibold text-base">{r.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{r.desc}</p>
               </motion.div>
             </Reveal>
@@ -301,11 +333,14 @@ export default function HomePage() {
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {features.map((f, i) => (
             <Reveal key={f.title} delay={i * 0.08}>
-              <motion.div whileHover={{ y: -6 }} className="h-full rounded-2xl border border-border bg-card p-6 shadow-card group">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary transition group-hover:bg-brand group-hover:text-white">
+              <motion.div whileHover={{ y: -8 }} className="card-3d h-full rounded-2xl border border-border bg-card p-6 shadow-card group relative overflow-hidden">
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.04), transparent 60%)" }}
+                />
+                <div className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/40 text-primary transition-all group-hover:from-primary group-hover:to-primary-glow group-hover:text-white group-hover:shadow-brand">
                   <f.icon className="h-5 w-5" />
                 </div>
-                <h3 className="mt-5 font-display text-lg font-semibold">{f.title}</h3>
+                <h3 className="mt-5 font-display text-base font-semibold">{f.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
               </motion.div>
             </Reveal>
@@ -333,20 +368,23 @@ export default function HomePage() {
           {SERVICE_CATALOG.map((s, i) => (
             <Reveal key={s.slug} delay={(i % 3) * 0.05}>
               <motion.div
-                whileHover={{ y: -6 }}
-                className="h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand hover:border-primary/30 transition-all duration-300"
+                whileHover={{ y: -8 }}
+                className="card-3d h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand hover:border-primary/30 transition-all duration-300 group relative overflow-hidden"
               >
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                  style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.04), transparent 60%)" }}
+                />
                 <motion.span
                   whileHover={{ rotate: 8, scale: 1.15 }}
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-xl"
+                  className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-accent to-accent/50 text-xl shadow-sm border border-border/50"
                 >
                   {s.emoji}
                 </motion.span>
-                <h3 className="mt-4 font-display text-lg font-semibold">{s.title}</h3>
+                <h3 className="mt-4 font-display text-base font-semibold">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.tagline}</p>
                 <div className="mt-4 flex flex-wrap gap-1.5">
                   {s.items.slice(0, 4).map((it) => (
-                    <span key={it} className="rounded-full border border-border px-2.5 py-1 text-[11px] text-muted-foreground">{it}</span>
+                    <span key={it} className="rounded-full border border-border bg-background/80 px-2.5 py-1 text-[11px] text-muted-foreground hover:border-primary/40 transition-colors">{it}</span>
                   ))}
                   {s.items.length > 4 && (
                     <span className="rounded-full bg-accent px-2.5 py-1 text-[11px] font-medium text-primary">+{s.items.length - 4} more</span>
@@ -382,11 +420,15 @@ export default function HomePage() {
           <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {PROCESS_STEPS.map((s, i) => (
               <Reveal key={s.n} delay={i * 0.06}>
-                <motion.div whileHover={{ y: -6 }} className="h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand hover:border-primary/40 transition-all duration-300">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent font-display text-sm font-bold text-primary shadow-sm">
+                <motion.div whileHover={{ y: -8 }} className="card-3d h-full rounded-2xl border border-border bg-card p-6 shadow-card hover:shadow-brand hover:border-primary/40 transition-all duration-300 relative overflow-hidden group">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"
+                    style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.05), transparent 60%)" }}
+                  />
+                  <div className="relative inline-flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br from-primary to-primary-glow font-display text-sm font-black text-white shadow-brand">
                     {s.n}
+                    <div className="absolute -inset-1 rounded-2xl border border-primary/20 animate-pulse-ring opacity-50" />
                   </div>
-                  <h3 className="mt-5 font-display font-semibold text-lg">{s.title}</h3>
+                  <h3 className="mt-5 font-display font-semibold text-base">{s.title}</h3>
                   <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.desc}</p>
                 </motion.div>
               </Reveal>
@@ -438,17 +480,18 @@ export default function HomePage() {
             {testimonials.map((t, i) => (
               <Reveal key={t.name} delay={i * 0.1}>
                 <motion.div
-                  whileHover={{ y: -4 }}
-                  className="rounded-2xl border border-border bg-background p-6 shadow-card"
+                  whileHover={{ y: -6 }}
+                  className="card-3d relative rounded-2xl border border-border bg-background p-6 shadow-card overflow-hidden group"
                 >
+                  <div className="absolute left-0 top-0 bottom-0 w-1 rounded-l-2xl bg-gradient-to-b from-primary to-primary-glow opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="flex gap-0.5 mb-4">
                     {Array.from({ length: t.rating }).map((_, j) => (
                       <Star key={j} className="h-4 w-4 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
                   <p className="text-sm text-muted-foreground leading-relaxed italic">"{t.quote}"</p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div className="h-9 w-9 rounded-full bg-brand flex items-center justify-center text-white font-bold text-sm">
+                  <div className="mt-5 flex items-center gap-3 pt-4 border-t border-border/50">
+                    <div className="h-9 w-9 rounded-full bg-gradient-to-br from-primary to-primary-glow flex items-center justify-center text-white font-bold text-sm shadow-brand">
                       {t.name[0]}
                     </div>
                     <div>

@@ -79,6 +79,7 @@
   --shadow-md: 0 8px 24px -12px oklch(0.19 0.04 275 / 0.14);
   --shadow-brand: 0 18px 44px -18px color-mix(in oklab, var(--primary) 42%, transparent);
   --shadow-card: 0 4px 20px -8px oklch(0.19 0.04 275 / 0.08);
+  --shadow-3d: 0 25px 50px -12px oklch(0.19 0.04 275 / 0.25), 0 0 0 1px oklch(0.925 0.008 275);
 }
 
 
@@ -89,6 +90,7 @@
   }
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
   body {
     background-color: var(--color-background);
@@ -96,6 +98,7 @@
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
     font-feature-settings: "ss01", "cv11";
+    overflow-x: hidden;
   }
   h1, h2, h3, h4 {
     font-family: var(--font-display);
@@ -109,8 +112,15 @@
   img {
     max-width: 100%;
   }
+
+  /* ── Mobile-first fluid typography ── */
+  h1 { font-size: clamp(1.75rem, 5vw + 0.5rem, 5rem); }
+  h2 { font-size: clamp(1.4rem, 3vw + 0.5rem, 3rem); }
+  h3 { font-size: clamp(1.1rem, 2vw + 0.25rem, 1.75rem); }
+  p  { font-size: clamp(0.875rem, 1.5vw + 0.1rem, 1.125rem); }
 }
 
+/* ── Text gradient ── */
 @utility text-gradient {
   background: var(--gradient-brand);
   -webkit-background-clip: text;
@@ -118,6 +128,7 @@
   color: transparent;
 }
 
+/* ── Hero background ── */
 @utility bg-hero {
   background-image: var(--gradient-hero);
 }
@@ -134,18 +145,142 @@
   box-shadow: var(--shadow-card);
 }
 
+@utility shadow-3d {
+  box-shadow: var(--shadow-3d);
+}
+
+/* ── 3D Perspective utilities ── */
+@utility perspective-1000 {
+  perspective: 1000px;
+}
+@utility transform-style-3d {
+  transform-style: preserve-3d;
+}
+@utility backface-hidden {
+  backface-visibility: hidden;
+}
+
+/* ── Float animations ── */
 @keyframes float-slow {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  33% { transform: translateY(-12px) rotate(1deg); }
+  66% { transform: translateY(-6px) rotate(-1deg); }
+}
+@keyframes float-medium {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-18px) scale(1.02); }
+}
+@keyframes float-fast {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-14px); }
+  50% { transform: translateY(-8px); }
 }
 @utility animate-float {
   animation: float-slow 6s ease-in-out infinite;
 }
+@utility animate-float-md {
+  animation: float-medium 4s ease-in-out infinite;
+}
+@utility animate-float-sm {
+  animation: float-fast 3s ease-in-out infinite;
+}
 
+/* ── Shimmer effect ── */
+@keyframes shimmer {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(100%); }
+}
+@utility animate-shimmer {
+  animation: shimmer 2s ease-in-out infinite;
+}
+
+/* ── Marquee ── */
 @keyframes marquee {
   from { transform: translateX(0); }
   to { transform: translateX(-50%); }
 }
 @utility animate-marquee {
   animation: marquee 30s linear infinite;
+}
+
+/* ── Pulse ring ── */
+@keyframes pulse-ring {
+  0% { transform: scale(0.8); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+@utility animate-pulse-ring {
+  animation: pulse-ring 2s ease-out infinite;
+}
+
+/* ── 3D Card hover effect ── */
+.card-3d {
+  transition: transform 0.4s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.4s ease;
+  transform-style: preserve-3d;
+}
+.card-3d:hover {
+  transform: perspective(800px) rotateX(-4deg) rotateY(4deg) scale(1.02);
+  box-shadow: 12px 20px 40px -10px oklch(0.374 0.24 272 / 0.18), var(--shadow-card);
+}
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+/* ── 3D Floating Orb ── */
+@keyframes orb-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  25% { transform: translate(20px, -15px) scale(1.05); }
+  50% { transform: translate(-10px, -30px) scale(0.95); }
+  75% { transform: translate(-20px, -10px) scale(1.02); }
+}
+.orb-animate {
+  animation: orb-float 12s ease-in-out infinite;
+}
+.orb-animate-2 {
+  animation: orb-float 16s ease-in-out infinite reverse;
+}
+.orb-animate-3 {
+  animation: orb-float 10s ease-in-out 3s infinite;
+}
+
+/* ── Gradient border card ── */
+.gradient-border {
+  position: relative;
+  border-radius: 1.5rem;
+}
+.gradient-border::before {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 1.5rem;
+  background: linear-gradient(135deg, oklch(0.374 0.24 272 / 0.5), oklch(0.598 0.23 286 / 0.3), transparent 60%);
+  z-index: -1;
+}
+
+/* ── Responsive section spacing ── */
+.section-py {
+  padding-top: clamp(3rem, 6vw, 6rem);
+  padding-bottom: clamp(3rem, 6vw, 6rem);
+}
+.section-px {
+  padding-left: clamp(1rem, 4vw, 2rem);
+  padding-right: clamp(1rem, 4vw, 2rem);
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: oklch(0.374 0.24 272 / 0.3);
+  border-radius: 999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: oklch(0.374 0.24 272 / 0.6);
 }
