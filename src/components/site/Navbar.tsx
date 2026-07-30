@@ -151,9 +151,6 @@ export function Navbar() {
 
         {/* Desktop CTA */}
         <div className="hidden lg:flex items-center gap-2 shrink-0">
-          <Button variant="outline" size="sm" asChild>
-            <Link href="tel:+917265025017">+91 72650 25017</Link>
-          </Button>
           <Button size="sm" asChild className="rounded-full shadow-brand bg-brand hover:bg-brand/90 text-white">
             <Link href="/contact">
               Start a Project <ArrowUpRight className="h-4 w-4" />
