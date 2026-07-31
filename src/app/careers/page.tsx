@@ -1,10 +1,14 @@
 "use client";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
-import { Globe, Heart, Coffee, Zap, Shield, Sparkles, ChevronDown, Mail, Send, Briefcase, Code, CheckCircle2 } from "lucide-react";
+import { Globe, Heart, Coffee, Zap, Shield, Sparkles, Mail, Briefcase, Code, CheckCircle2, ArrowRight, ChevronDown } from "lucide-react";
 import { PageShell } from "@/components/site/PageShell";
 import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { CONTACT } from "@/lib/contact-info";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Separator } from "@/components/ui/separator";
 
 const perks = [
   { icon: Globe, title: "Remote Collaboration", body: "Work from anywhere while collaborating on real-world projects across global timezones." },
@@ -65,160 +69,192 @@ export default function CareersPage() {
 
   return (
     <PageShell>
-      {/* Hero */}
-      <section className="bg-hero border-b border-border">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 text-center md:text-left">
+      {/* ── HERO ── */}
+      <section className="bg-hero border-b border-border relative overflow-hidden">
+        {/* bg orb */}
+        <div className="absolute -top-20 right-0 w-[400px] h-[400px] rounded-full opacity-20 blur-3xl pointer-events-none"
+          style={{ background: "radial-gradient(circle, oklch(0.374 0.24 272 / 0.5), transparent 70%)" }} />
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20 text-center">
           <Reveal><Eyebrow>Careers at CodeSwipe</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h1 className="mt-6 text-4xl sm:text-5xl md:text-6xl font-display font-semibold max-w-4xl leading-tight">
-              Build Your Career with <span className="text-gradient">CodeSwipe IT Solutions</span>
+            <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-display font-bold leading-tight tracking-tight max-w-4xl mx-auto">
+              Build Your Career with{" "}
+              <span className="text-gradient">CodeSwipe IT Solutions</span>
             </h1>
           </Reveal>
           <Reveal delay={0.2}>
-            <p className="mt-5 max-w-3xl text-muted-foreground text-base md:text-lg leading-relaxed">
-              We are constantly hiring passionate developers, designers, and problem solvers. Explore our open positions below and email your resume directly to join our team!
+            <p className="mt-5 max-w-2xl mx-auto text-muted-foreground text-base md:text-lg leading-relaxed">
+              We're hiring passionate developers, designers, and problem solvers. Explore our open positions and send your resume directly to join our team!
             </p>
+          </Reveal>
+          <Reveal delay={0.3}>
+            <div className="mt-8 flex flex-wrap justify-center gap-3">
+              <Button asChild size="lg" className="rounded-full bg-brand hover:bg-brand/90 text-white shadow-brand">
+                <a href="#openings">View Open Positions <ArrowRight className="h-4 w-4" /></a>
+              </Button>
+              <Button asChild variant="outline" size="lg" className="rounded-full">
+                <a href={`mailto:${CONTACT.email}?subject=Job+Application`}>
+                  <Mail className="h-4 w-4" /> Send Resume
+                </a>
+              </Button>
+            </div>
           </Reveal>
         </div>
       </section>
 
-      {/* Perks */}
+      {/* ── PERKS ── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20">
-        <Reveal><Eyebrow>Why Join Us</Eyebrow></Reveal>
-        <Reveal delay={0.1}>
-          <h2 className="mt-4 text-3xl md:text-5xl font-display font-semibold">
-            Work. Learn. <span className="text-gradient">Grow Together.</span>
-          </h2>
-        </Reveal>
-        <div className="mt-10 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div className="text-center mb-12">
+          <Reveal><Eyebrow>Why Join Us</Eyebrow></Reveal>
+          <Reveal delay={0.1}>
+            <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
+              Work. Learn. <span className="text-gradient">Grow Together.</span>
+            </h2>
+          </Reveal>
+        </div>
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
           {perks.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.05}>
-              <motion.div whileHover={{ y: -4 }} className="rounded-2xl border border-border bg-card p-6 shadow-card h-full">
-                <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary">
-                  <p.icon className="h-5 w-5" />
-                </div>
-                <h3 className="mt-5 font-display font-semibold text-lg">{p.title}</h3>
-                <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+              <motion.div whileHover={{ y: -6 }} className="h-full">
+                <Card className="card-3d h-full border-border shadow-card hover:border-primary/30 hover:shadow-brand transition-all group">
+                  <CardHeader>
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/50 text-primary group-hover:from-primary group-hover:to-primary-glow group-hover:text-white transition-all shadow-sm">
+                      <p.icon className="h-5 w-5" />
+                    </div>
+                    <CardTitle className="mt-4 font-display text-base">{p.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-sm text-muted-foreground leading-relaxed">{p.body}</p>
+                  </CardContent>
+                </Card>
               </motion.div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* Open Positions */}
-      <section className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 pb-20">
+      <Separator className="mx-auto max-w-7xl" />
+
+      {/* ── OPEN POSITIONS ── */}
+      <section id="openings" className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-20">
         <div className="text-center mb-12">
           <Reveal><Eyebrow>Current Openings</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h2 className="mt-4 text-3xl md:text-5xl font-display font-semibold">
+            <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
               Open Technical <span className="text-gradient">Positions</span>
             </h2>
           </Reveal>
           <Reveal delay={0.15}>
-            <p className="mt-3 text-muted-foreground">Select a role below to view required skills and apply via email.</p>
+            <p className="mt-3 text-muted-foreground text-sm">Select a role below to view required skills and apply via email.</p>
           </Reveal>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-3">
           {jobs.map((j, i) => (
             <Reveal key={j.role} delay={i * 0.04}>
-              <div className="rounded-2xl border border-border bg-card shadow-card overflow-hidden hover:border-primary/40 transition">
-                <button
-                  onClick={() => setOpen(open === i ? null : i)}
-                  className="w-full text-left p-6 flex items-center justify-between gap-4"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="hidden sm:inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-accent text-primary mt-1">
-                      <Briefcase className="h-5 w-5" />
-                    </div>
-                    <div>
-                      <h3 className="font-display font-semibold text-lg md:text-xl text-foreground">{j.role}</h3>
-                      <div className="flex flex-wrap items-center gap-2 mt-1.5 text-xs text-muted-foreground">
-                        <span className="rounded-full bg-accent/60 px-2.5 py-0.5 font-medium text-primary">{j.type}</span>
-                        <span>•</span>
-                        <span>Experience: {j.exp}</span>
+              <motion.div whileHover={{ scale: open === i ? 1 : 1.005 }}>
+                <Card className={`border-border shadow-card overflow-hidden transition-all duration-300 ${open === i ? "border-primary/40 shadow-brand" : "hover:border-primary/20"}`}>
+                  <button
+                    onClick={() => setOpen(open === i ? null : i)}
+                    className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="hidden sm:inline-flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/50 text-primary mt-0.5">
+                        <Briefcase className="h-5 w-5" />
                       </div>
-                    </div>
-                  </div>
-                  <motion.div animate={{ rotate: open === i ? 180 : 0 }} className="text-primary shrink-0">
-                    <ChevronDown className="h-5 w-5" />
-                  </motion.div>
-                </button>
-
-                <AnimatePresence>
-                  {open === i && (
-                    <motion.div
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      className="border-t border-border px-6 py-6 bg-muted/20"
-                    >
-                      <p className="text-sm text-muted-foreground leading-relaxed">{j.desc}</p>
-                      
-                      <div className="mt-4">
-                        <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2 flex items-center gap-1.5">
-                          <Code className="h-3.5 w-3.5 text-primary" /> Key Skills & Tech Stack:
-                        </div>
-                        <div className="flex flex-wrap gap-1.5">
-                          {j.skills.map((sk) => (
-                            <span key={sk} className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium text-foreground">
-                              {sk}
-                            </span>
-                          ))}
+                      <div>
+                        <h3 className="font-display font-semibold text-base md:text-lg text-foreground">{j.role}</h3>
+                        <div className="flex flex-wrap items-center gap-2 mt-1.5">
+                          <Badge variant="outline" className="text-[10px] text-primary border-primary/30 bg-primary/5">{j.type}</Badge>
+                          <span className="text-xs text-muted-foreground">Exp: {j.exp}</span>
                         </div>
                       </div>
-
-                      <div className="mt-6 pt-4 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-                        <span className="text-xs text-muted-foreground flex items-center gap-1.5">
-                          <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Apply by emailing your resume directly
-                        </span>
-                        <a
-                          href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(`Application for ${j.role}`)}&body=${encodeURIComponent(`Hi CodeSwipe Hiring Team,\n\nI would like to apply for the position of ${j.role}.\n\nPlease find my resume attached.\n\nName:\nPhone:\nPortfolio / GitHub:\n\nThank you!`)}`}
-                          className="inline-flex items-center gap-2 rounded-full bg-brand text-white text-xs font-semibold px-5 py-2.5 shadow-brand hover:opacity-90 transition"
-                        >
-                          <Mail className="h-3.5 w-3.5" /> Email Resume for {j.role}
-                        </a>
-                      </div>
+                    </div>
+                    <motion.div animate={{ rotate: open === i ? 180 : 0 }} transition={{ duration: 0.25 }} className="text-primary shrink-0">
+                      <ChevronDown className="h-5 w-5" />
                     </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+                  </button>
+
+                  <AnimatePresence>
+                    {open === i && (
+                      <motion.div
+                        initial={{ height: 0, opacity: 0 }}
+                        animate={{ height: "auto", opacity: 1 }}
+                        exit={{ height: 0, opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                        className="border-t border-border"
+                      >
+                        <div className="px-5 sm:px-6 py-5 bg-muted/20">
+                          <p className="text-sm text-muted-foreground leading-relaxed">{j.desc}</p>
+
+                          <div className="mt-4">
+                            <div className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2.5 flex items-center gap-1.5">
+                              <Code className="h-3.5 w-3.5 text-primary" /> Key Skills & Tech Stack
+                            </div>
+                            <div className="flex flex-wrap gap-2">
+                              {j.skills.map((sk) => (
+                                <Badge key={sk} variant="outline" className="text-xs rounded-full border-border bg-background hover:border-primary/40 transition-colors">
+                                  {sk}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+
+                          <div className="mt-6 pt-4 border-t border-border/50 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                            <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                              <CheckCircle2 className="h-4 w-4 text-emerald-500" /> Apply by emailing your resume directly
+                            </span>
+                            <Button asChild size="sm" className="rounded-full bg-brand hover:bg-brand/90 text-white shadow-brand text-xs">
+                              <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent(`Application for ${j.role}`)}&body=${encodeURIComponent(`Hi CodeSwipe Hiring Team,\n\nI would like to apply for the position of ${j.role}.\n\nPlease find my resume attached.\n\nName:\nPhone:\nPortfolio / GitHub:\n\nThank you!`)}`}>
+                                <Mail className="h-3.5 w-3.5" /> Apply for {j.role}
+                              </a>
+                            </Button>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </Card>
+              </motion.div>
             </Reveal>
           ))}
         </div>
       </section>
 
-      {/* How to Apply Section */}
+      {/* ── HOW TO APPLY ── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pb-24">
-        <div className="rounded-3xl border border-border bg-gradient-to-br from-accent/50 via-background to-secondary/50 p-8 md:p-12 shadow-card grid gap-8 md:grid-cols-2 md:items-center">
-          <div>
-            <Eyebrow>Direct Email Application</Eyebrow>
-            <h2 className="mt-4 text-3xl md:text-4xl font-display font-semibold">
-              Don't see your exact role? <span className="text-gradient">Email us anyway!</span>
-            </h2>
-            <p className="mt-4 text-sm md:text-base text-muted-foreground leading-relaxed">
-              We are always on the lookout for exceptional talent. If you are passionate about full-stack web development, mobile apps, UI design, or eCommerce — send your CV over!
-            </p>
-          </div>
-          <div className="rounded-2xl border border-border bg-card p-6 md:p-8 shadow-card flex flex-col items-start gap-4">
-            <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-brand text-white shadow-brand">
-              <Mail className="h-6 w-6" />
-            </div>
+        <Card className="rounded-3xl border-border bg-gradient-to-br from-accent/40 via-background to-secondary/40 shadow-card overflow-hidden">
+          <CardContent className="p-8 md:p-12 grid gap-8 md:grid-cols-2 md:items-center">
             <div>
-              <h3 className="font-display font-semibold text-lg">Send Resume via Email</h3>
-              <p className="text-xs text-muted-foreground mt-1">Include your resume, portfolio link, and expected CTC.</p>
+              <Eyebrow>Direct Email Application</Eyebrow>
+              <h2 className="mt-4 text-2xl md:text-3xl font-display font-semibold">
+                Don't see your role?{" "}
+                <span className="text-gradient">Email us anyway!</span>
+              </h2>
+              <p className="mt-4 text-sm text-muted-foreground leading-relaxed">
+                We're always looking for exceptional talent. If you're passionate about development, design, or eCommerce — send your CV over!
+              </p>
             </div>
-            <a
-              href={`mailto:${CONTACT.email}?subject=${encodeURIComponent("Job Application - General Inquiry")}`}
-              className="text-lg md:text-xl font-bold text-primary hover:underline break-all"
-            >
-              {CONTACT.email}
-            </a>
-            <span className="text-xs text-muted-foreground">
-              📞 Or reach out via WhatsApp: <strong className="text-foreground">+91 72650 25017</strong>
-            </span>
-          </div>
-        </div>
+            <Card className="border-border shadow-card">
+              <CardContent className="p-6 flex flex-col items-start gap-4">
+                <div className="inline-flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-primary to-primary-glow text-white shadow-brand">
+                  <Mail className="h-6 w-6" />
+                </div>
+                <div>
+                  <h3 className="font-display font-semibold">Send Resume via Email</h3>
+                  <p className="text-xs text-muted-foreground mt-1">Include your resume, portfolio link, and expected CTC.</p>
+                </div>
+                <a href={`mailto:${CONTACT.email}?subject=${encodeURIComponent("Job Application - General Inquiry")}`}
+                  className="text-lg font-bold text-primary hover:underline break-all">
+                  {CONTACT.email}
+                </a>
+                <Badge variant="outline" className="text-xs rounded-full">
+                  📞 WhatsApp: <strong className="ml-1 text-foreground">+91 72650 25017</strong>
+                </Badge>
+              </CardContent>
+            </Card>
+          </CardContent>
+        </Card>
       </section>
     </PageShell>
   );

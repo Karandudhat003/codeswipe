@@ -52,7 +52,7 @@ export default function HirePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 pt-16 pb-20">
           <Reveal><Eyebrow>Hire dedicated developers</Eyebrow></Reveal>
           <Reveal delay={0.1}>
-            <h1 className="mt-6 text-5xl md:text-6xl font-display font-semibold max-w-3xl leading-tight">
+            <h1 className="mt-6 text-3xl sm:text-5xl md:text-6xl font-display font-bold max-w-3xl leading-tight tracking-tight">
               Senior engineers, <span className="text-gradient italic">on your team.</span>
             </h1>
           </Reveal>
@@ -80,15 +80,17 @@ export default function HirePage() {
         <div className="grid gap-4 md:grid-cols-3">
           {perks.map((p, i) => (
             <Reveal key={p.title} delay={i * 0.06}>
-              <Card className="border-border shadow-card">
-                <CardContent className="p-6">
-                  <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary">
-                    <p.icon className="h-5 w-5" />
-                  </div>
-                  <h3 className="mt-4 font-display font-semibold">{p.title}</h3>
-                  <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
-                </CardContent>
-              </Card>
+              <motion.div whileHover={{ y: -6 }} className="h-full">
+                <Card className="card-3d border-border shadow-card h-full hover:border-primary/30 hover:shadow-brand transition-all group">
+                  <CardContent className="p-6">
+                    <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/50 text-primary group-hover:from-primary group-hover:to-primary-glow group-hover:text-white transition-all shadow-sm">
+                      <p.icon className="h-5 w-5" />
+                    </div>
+                    <h3 className="mt-4 font-display font-semibold">{p.title}</h3>
+                    <p className="mt-1 text-sm text-muted-foreground">{p.desc}</p>
+                  </CardContent>
+                </Card>
+              </motion.div>
             </Reveal>
           ))}
         </div>
@@ -102,20 +104,23 @@ export default function HirePage() {
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {roles.map((r, i) => (
             <Reveal key={r.title} delay={i * 0.04}>
-              <motion.div whileHover={{ y: -4 }}>
-                <Card className="border-border shadow-card h-full">
+              <motion.div whileHover={{ y: -6 }} className="h-full">
+                <Card className="card-3d border-border shadow-card h-full hover:border-primary/30 hover:shadow-brand transition-all group relative overflow-hidden">
+                  <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"
+                    style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.04), transparent 60%)" }}
+                  />
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between">
-                      <div className="inline-flex h-11 w-11 items-center justify-center rounded-xl bg-accent text-primary">
+                      <div className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/50 text-primary group-hover:from-primary group-hover:to-primary-glow group-hover:text-white transition-all shadow-sm">
                         <r.icon className="h-5 w-5" />
                       </div>
-                      <span className="text-xs font-medium text-primary">{r.rate}</span>
+                      <span className="text-[11px] font-semibold text-primary bg-primary/8 border border-primary/20 px-2.5 py-1 rounded-full">{r.rate}</span>
                     </div>
                     <h3 className="mt-4 font-display font-semibold">{r.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">{r.stack}</p>
                     <Button
                       variant="ghost"
-                      className="mt-4 -ml-3 text-primary hover:text-primary"
+                      className="mt-4 -ml-3 text-primary hover:text-primary text-sm"
                       onClick={() => {
                         setForm((f) => ({ ...f, role: r.title }));
                         document.getElementById("hire-form")?.scrollIntoView({ behavior: "smooth" });
