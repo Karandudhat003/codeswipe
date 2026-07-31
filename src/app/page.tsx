@@ -139,12 +139,12 @@ export default function HomePage() {
             <div className="text-center lg:text-left pb-16 md:pb-24">
               <Reveal>
                 <div className="flex justify-center lg:justify-start">
-                  <Eyebrow>🏆 India's Premier IT & Digital Product Studio</Eyebrow>
+                  <Eyebrow>🏆 India's Premier IT Studio</Eyebrow>
                 </div>
               </Reveal>
 
               <Reveal delay={0.1}>
-                <h1 className="mt-6 text-3xl sm:text-5xl lg:text-6xl xl:text-7xl font-display font-bold leading-[1.08] tracking-tight">
+                <h1 className="mt-5 text-2xl sm:text-4xl lg:text-5xl xl:text-6xl font-display font-bold leading-[1.1] tracking-tight">
                   Engineering Your Next{" "}
                   <span className="text-gradient italic">Category-Defining</span>
                   <br /> Digital Solution.
