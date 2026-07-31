@@ -82,7 +82,7 @@ const agencyReasons = [
   { icon: Clock, title: "On-Time, Every Time", desc: "We use agile sprints with weekly deliverables so your project never stalls." },
   { icon: BadgeCheck, title: "Quality Guarantee", desc: "Rigorous code review, QA testing, and security audits before every release." },
   { icon: TrendingUp, title: "Measurable Results", desc: "We build for business growth — every feature tied to a clear business metric." },
-  { icon: Award, title: "Trusted Partner", desc: "50+ successful deliveries and a 100% client satisfaction record since 2022." },
+  { icon: Award, title: "Trusted Partner", desc: "20+ successful deliveries and a 100% client satisfaction record since 2022." },
   { icon: MessageCircle, title: "Direct Communication", desc: "Dedicated project manager. WhatsApp, Slack, or Zoom — always reachable." },
 ];
 
@@ -241,7 +241,7 @@ export default function HomePage() {
                     transition={{ duration: 3.5, repeat: Infinity, ease: "easeInOut" }}
                     className="flex items-center gap-2 rounded-2xl glass border shadow-3d px-3.5 py-2.5 text-xs font-semibold"
                   >
-                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary text-white text-[11px] font-black">50+</span>
+                    <span className="flex h-7 w-7 items-center justify-center rounded-xl bg-primary text-white text-[11px] font-black">20+</span>
                     <div>
                       <div className="font-bold text-foreground text-[11px]">Projects</div>
                       <div className="text-[10px] text-muted-foreground">Delivered</div>
@@ -301,7 +301,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             {[
-              { value: "50+", label: "Projects Delivered", color: "text-primary" },
+              { value: "20+", label: "Projects Delivered", color: "text-primary" },
               { value: "15+", label: "Expert Engineers", color: "text-violet-600" },
               { value: "100%", label: "Client Satisfaction", color: "text-emerald-600" },
               { value: "4+", label: "Years of Excellence", color: "text-amber-600" },
@@ -375,7 +375,7 @@ export default function HomePage() {
               CodeSwipe IT Solutions is a premier software development company based in India, serving clients globally since 2022. We specialise in building high-performance digital products — from MVPs to enterprise-grade platforms — with an unwavering focus on quality, speed and business impact.
             </p>
             <p className="mt-3 text-muted-foreground leading-relaxed">
-              Our team of 15+ engineers, designers and strategists has delivered 50+ projects across healthcare, fintech, e-commerce, SaaS and more. We combine technical excellence with deep business understanding to create solutions that don't just look great — they perform.
+              Our team of 15+ engineers, designers and strategists has delivered 20+ projects across healthcare, fintech, e-commerce, SaaS and more. We combine technical excellence with deep business understanding to create solutions that don't just look great — they perform.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <Link href="/about" className="inline-flex items-center gap-2 rounded-full bg-brand text-white px-5 py-2.5 text-sm font-medium shadow-brand hover:opacity-90 transition">
