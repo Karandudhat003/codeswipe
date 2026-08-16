@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import finalLogo from "@/assets/Final logo.png";
 
 // Module-level variable to persist state across client-side transitions
@@ -51,7 +51,7 @@ export function LogoPreloader() {
 
   // Staggered letters variants for "Welcome to"
   const welcomeText = "Welcome to";
-  const letterVariants = {
+  const letterVariants: Variants = {
     hidden: { opacity: 0, y: 10 },
     visible: (i: number) => ({
       opacity: 1,
