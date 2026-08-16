@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
+import { LogoPreloader } from "@/components/site/LogoPreloader";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -195,7 +196,10 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(websiteSchema) }}
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <LogoPreloader />
+        {children}
+      </body>
     </html>
   );
 }

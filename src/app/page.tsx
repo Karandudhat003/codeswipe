@@ -15,6 +15,7 @@ import { Reveal, Eyebrow } from "@/components/site/Reveal";
 import { TechMarquee, TechStackGrid } from "@/components/site/TechIcons";
 import { SERVICE_CATALOG, PROCESS_STEPS, WHY_CHOOSE_US } from "@/lib/site-content";
 import { HeroBackgroundGrid, HeroShadcnInteractiveShowcase } from "@/components/ui/hero-background";
+import { ClickUpServiceTabs, ClickUpDarkAIShowcase, ClickUpComparison, ClickUpIndustryFilter } from "@/components/site/ClickUpStyleShowcase";
 import team from "@/assets/team.jpg";
 
 const heroRight = "/hero-right.png";
@@ -415,10 +416,19 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── SERVICES ────────────────────────────────────────────────────── */}
+      {/* ── CLICKUP STYLE WORKFLOW & SERVICE TABS ────────────────────── */}
+      <ClickUpServiceTabs />
+
+      {/* ── CLICKUP STYLE DARK AI SHOWCASE ───────────────────────────── */}
+      <ClickUpDarkAIShowcase />
+
+      {/* ── CLICKUP STYLE COMPARISON ─────────────────────────────────── */}
+      <ClickUpComparison />
+
+      {/* ── SERVICES GRID ────────────────────────────────────────────────────── */}
       <section className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-20" aria-label="Our services">
         <div className="text-center">
-          <Reveal><Eyebrow>Our Services</Eyebrow></Reveal>
+          <Reveal><Eyebrow>Full Service Catalog</Eyebrow></Reveal>
           <Reveal delay={0.1}>
             <h2 className="mt-4 text-3xl md:text-5xl font-display font-semibold">
               20+ Professional Services,{" "}
@@ -470,6 +480,9 @@ export default function HomePage() {
 
       {/* ── TECH STACK ──────────────────────────────────────────────────── */}
       <TechStackGrid />
+
+      {/* ── CLICKUP STYLE FILTERABLE INDUSTRY GRID ──────────────────── */}
+      <ClickUpIndustryFilter />
 
       {/* ── PROCESS ─────────────────────────────────────────────────────── */}
       <section className="border-y border-border bg-secondary/40 py-24" aria-label="Development process">

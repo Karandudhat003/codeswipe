@@ -110,11 +110,10 @@ export default function HirePage() {
                     style={{ background: "linear-gradient(135deg, oklch(0.374 0.24 272 / 0.04), transparent 60%)" }}
                   />
                   <CardContent className="p-6">
-                    <div className="flex items-start justify-between">
+                    <div className="flex items-start">
                       <div className="relative inline-flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-accent to-accent/50 text-primary group-hover:from-primary group-hover:to-primary-glow group-hover:text-white transition-all shadow-sm">
                         <r.icon className="h-5 w-5" />
                       </div>
-                      <span className="text-[11px] font-semibold text-primary bg-primary/8 border border-primary/20 px-2.5 py-1 rounded-full">{r.rate}</span>
                     </div>
                     <h3 className="mt-4 font-display font-semibold">{r.title}</h3>
                     <p className="mt-1 text-xs text-muted-foreground">{r.stack}</p>

@@ -270,6 +270,126 @@
   padding-right: clamp(1rem, 4vw, 2rem);
 }
 
+/* ── Gradient flow animation ── */
+@keyframes gradient-flow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+@utility animate-gradient-flow {
+  animation: gradient-flow 4s ease infinite;
+  background-size: 200% 200%;
+}
+
+/* ── Glow pulse animation ── */
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px oklch(0.374 0.24 272 / 0.3); }
+  50% { box-shadow: 0 0 40px oklch(0.374 0.24 272 / 0.6), 0 0 80px oklch(0.598 0.23 286 / 0.3); }
+}
+@utility animate-glow-pulse {
+  animation: glow-pulse 2.5s ease-in-out infinite;
+}
+
+/* ── Spin slow ── */
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@utility animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+/* ── Border dance gradient ── */
+@keyframes border-dance {
+  0% { border-image-source: linear-gradient(0deg, oklch(0.374 0.24 272), oklch(0.598 0.23 286)); }
+  50% { border-image-source: linear-gradient(180deg, oklch(0.374 0.24 272), oklch(0.598 0.23 286)); }
+  100% { border-image-source: linear-gradient(360deg, oklch(0.374 0.24 272), oklch(0.598 0.23 286)); }
+}
+
+/* ── Typing cursor blink ── */
+@keyframes cursor-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+@utility animate-cursor {
+  animation: cursor-blink 1s step-end infinite;
+}
+
+/* ── Fade up (more pronounced) ── */
+@keyframes fade-up-strong {
+  from { opacity: 0; transform: translateY(40px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@utility animate-fade-up {
+  animation: fade-up-strong 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── Slide in right ── */
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(40px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+@utility animate-slide-right {
+  animation: slide-in-right 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* ── No scrollbar utility ── */
+@utility no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+/* ── Hover lift ── */
+@utility hover-lift {
+  transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1), box-shadow 0.3s ease;
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-brand);
+  }
+}
+
+/* ── Text shimmer ── */
+@keyframes text-shimmer {
+  from { background-position: -200% center; }
+  to { background-position: 200% center; }
+}
+@utility text-shimmer {
+  background: linear-gradient(90deg, oklch(0.374 0.24 272) 0%, oklch(0.598 0.23 286) 30%, oklch(0.8 0.15 290) 50%, oklch(0.598 0.23 286) 70%, oklch(0.374 0.24 272) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: text-shimmer 3s linear infinite;
+}
+
+/* ── Dark glassmorphism variant ── */
+.glass-dark {
+  background: rgba(2, 6, 23, 0.7);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* ── Gradient animated border ── */
+.gradient-border-animated {
+  position: relative;
+  border-radius: 1.5rem;
+  background: linear-gradient(oklch(0.97 0.005 280), oklch(0.97 0.005 280)) padding-box,
+              linear-gradient(135deg, oklch(0.374 0.24 272), oklch(0.598 0.23 286), oklch(0.374 0.24 272)) border-box;
+  border: 2px solid transparent;
+  background-size: 200% 200%;
+  animation: gradient-flow 4s ease infinite;
+}
+
+/* ── Mesh gradient background ── */
+@utility bg-mesh-dark {
+  background-color: oklch(0.06 0.015 272);
+  background-image:
+    radial-gradient(ellipse 80% 50% at 20% -20%, oklch(0.374 0.24 272 / 0.3), transparent),
+    radial-gradient(ellipse 60% 50% at 80% 120%, oklch(0.5 0.2 286 / 0.2), transparent);
+}
+
 /* ── Scrollbar ── */
 ::-webkit-scrollbar {
   width: 6px;

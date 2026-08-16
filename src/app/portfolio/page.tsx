@@ -140,7 +140,7 @@ export default function PortfolioPage() {
         </Reveal>
 
         {/* Gallery */}
-        <motion.div layout className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           <AnimatePresence mode="popLayout">
             {filtered.map((p) => (
               <motion.div
@@ -148,11 +148,12 @@ export default function PortfolioPage() {
                 key={p.id}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.35, ease: "easeOut" }}
-                className="group relative overflow-hidden rounded-2xl border border-border bg-card shadow-card hover:shadow-brand hover:border-primary/40 transition-all duration-300 flex flex-col"
+                exit={{ opacity: 0, scale: 0.95 }}
+                transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+                className="group relative overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-card hover:shadow-xl hover:border-indigo-400/50 transition-all duration-300 flex flex-col justify-between"
               >
-                <div className={`relative overflow-hidden ${p.aspect}`}>
+                {/* Image Area */}
+                <div className="relative overflow-hidden aspect-[16/10] bg-slate-100">
                   {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img
                     src={p.img}
@@ -160,28 +161,34 @@ export default function PortfolioPage() {
                     loading="lazy"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
-                  <div className="absolute top-3 right-3">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-black/60 backdrop-blur-md px-3 py-1 text-[11px] font-medium text-white border border-white/20">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                  
+                  {/* Category Badge overlay on top-right */}
+                  <div className="absolute top-4 right-4">
+                    <span className="inline-flex items-center rounded-full bg-white/90 backdrop-blur-md px-3 py-1 text-[11px] font-semibold text-slate-800 border border-white/20 shadow-sm">
                       {p.category}
                     </span>
                   </div>
                 </div>
 
-                <div className="p-6 flex flex-col flex-1 justify-between">
-                  <div>
-                    <h3 className="font-display font-semibold text-lg text-foreground group-hover:text-primary transition">{p.title}</h3>
-                    <p className="mt-2 text-xs text-muted-foreground leading-relaxed">{p.desc}</p>
+                {/* Content Area */}
+                <div className="p-6 flex flex-col justify-between flex-1">
+                  <div className="space-y-2">
+                    <h3 className="font-display font-bold text-lg text-slate-900 group-hover:text-indigo-600 transition duration-300 flex items-start justify-between gap-2">
+                      <span>{p.title}</span>
+                    </h3>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">
+                      {p.desc}
+                    </p>
                   </div>
 
-                  <div className="mt-5 pt-4 border-t border-border/60 flex flex-wrap items-center justify-between gap-2">
-                    <div className="flex flex-wrap gap-1.5">
-                      {p.tech.map((t) => (
-                        <span key={t} className="rounded-full bg-accent/60 px-2.5 py-0.5 text-[10px] font-medium text-primary">
-                          {t}
-                        </span>
-                      ))}
-                    </div>
+                  {/* Tech stack tags aligned neatly at bottom */}
+                  <div className="mt-6 pt-4 border-t border-slate-100 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <span key={t} className="rounded-full bg-indigo-50 border border-indigo-100/60 px-2.5 py-0.5 text-[10px] font-semibold text-indigo-700">
+                        {t}
+                      </span>
+                    ))}
                   </div>
                 </div>
               </motion.div>
