@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Space_Grotesk, Inter } from 'next/font/google';
 import './globals.css';
 import { LogoPreloader } from "@/components/site/LogoPreloader";
+import { WelcomeModal } from "@/components/site/WelcomeModal";
 
 const inter = Inter({
   subsets: ['latin'],
@@ -198,6 +199,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <LogoPreloader />
+        <WelcomeModal />
         {children}
       </body>
     </html>

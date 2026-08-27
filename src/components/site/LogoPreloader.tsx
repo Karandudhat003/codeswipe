@@ -22,9 +22,9 @@ export function LogoPreloader() {
     // Lock scrolling while preloader is active
     document.body.style.overflow = "hidden";
 
-    // Progress counter animation over 5 seconds (5000ms)
+    // Progress counter animation over 2 seconds (2000ms)
     const startTime = Date.now();
-    const duration = 5000;
+    const duration = 2000;
 
     const interval = setInterval(() => {
       const elapsed = Date.now() - startTime;
